@@ -13,4 +13,4 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "Data Usage"
-include ':app'
+include (":app")
