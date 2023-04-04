@@ -7,16 +7,16 @@ plugins {
 }
 
 android {
-    namespace = com.demo.datausage.build.ConfigData.namespace
-    compileSdk = com.demo.datausage.build.ConfigData.compileSdkVersion
+    namespace = ConfigData.namespace
+    compileSdk = ConfigData.compileSdkVersion
 
     defaultConfig {
-        applicationId = com.demo.datausage.build.ConfigData.applicationId
-        minSdk = com.demo.datausage.build.ConfigData.minSdkVersion
-        targetSdk = com.demo.datausage.build.ConfigData.targetSdkVersion
-        versionCode = com.demo.datausage.build.ConfigData.applicationVersionCode
-        versionName = com.demo.datausage.build.ConfigData.applicationVersionName
-        testInstrumentationRunner = com.demo.datausage.build.ConfigData.testInstrumentationRunner
+        applicationId = ConfigData.applicationId
+        minSdk = ConfigData.minSdkVersion
+        targetSdk = ConfigData.targetSdkVersion
+        versionCode = ConfigData.applicationVersionCode
+        versionName = ConfigData.applicationVersionName
+        testInstrumentationRunner = ConfigData.testInstrumentationRunner
     }
 
     buildTypes {
