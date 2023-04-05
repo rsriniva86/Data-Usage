@@ -33,11 +33,21 @@ android {
     kotlinOptions {
         jvmTarget = com.demo.datausage.build.Versions.jvmTarget
     }
+    buildFeatures {
+        compose = true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion = ConfigData.kotlinCompilerExtensionVersion
+    }
 }
 
 dependencies {
+    implementation("androidx.compose.material:material:1.1.1")
+    implementation("androidx.compose.foundation:foundation:1.1.1")
     addAndroidDependencies()
     addAndroidUIDependencies()
     addJUnitTestDependencies()
     addAndroidTestDependencies()
+    addComposeOfficialDependencies()
+    addComposeThirdPartyDependencies()
 }
