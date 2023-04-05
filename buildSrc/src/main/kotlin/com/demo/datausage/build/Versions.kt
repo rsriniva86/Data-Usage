@@ -1,0 +1,27 @@
+package com.demo.datausage.build
+
+object Versions {
+
+    const val jvmTarget = "1.8"
+    const val gradlePlugin = "4.2.1"
+    const val kotlin = "1.5.0"
+    const val ktx = "1.8.0"
+    const val timber = "4.7.1"
+    const val appCompat = "1.4.1"
+    const val constraintLayout = "1.1.3"
+    const val jUnit = "4.13.2"
+    const val extJunit = "1.1.3"
+    const val espresso = "3.4.0"
+    const val compose = "1.2.1"
+    const val composeCompiler = "1.3.0"
+    const val activityCompose = "1.5.1"
+    const val pagingCompose = "1.0.0-alpha16"
+    const val navCompose = "2.5.1"
+    const val constraintLayoutCompose = "1.0.1"
+    const val fontAwesomeCompose = "1.0.0-beta02"
+    const val androidLifecycleGrouped = "2.5.1"
+    const val lottie = "4.2.0"
+    const val material = "1.6.0"
+    const val material3 = "1.0.0-alpha16"
+
+}
