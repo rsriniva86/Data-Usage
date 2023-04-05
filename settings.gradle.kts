@@ -1,2 +1,12 @@
 rootProject.name = "Data Usage"
 include (":app")
+include(":core")
+include(":core:repository")
+include(":features")
+include(":features:consumption")
+include(":features:consumption:years")
+include(":features:consumption:qtr")
+include(":core:data")
+include(":core:data:datasource")
+include(":core:data:datasource:remote")
+include(":core:data:datasource:local")
