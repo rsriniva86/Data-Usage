@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.material3.Text
+import com.demo.datausage.common.theme.DataUsageMaterial3Theme
 
 class MainActivity: ComponentActivity() {
 
@@ -11,7 +12,9 @@ class MainActivity: ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            Text(text="Hello")
+            DataUsageMaterial3Theme {
+                Text(text = "Hello")
+            }
         }
     }
 }

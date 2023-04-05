@@ -42,8 +42,10 @@ android {
 }
 
 dependencies {
-    implementation("androidx.compose.material:material:1.1.1")
-    implementation("androidx.compose.foundation:foundation:1.1.1")
+   // implementation("androidx.compose.material:material:1.1.1")
+   // implementation("androidx.compose.foundation:foundation:1.1.1")
+    implementation(project(mapOf("path" to ":common:theme")))
+
     addAndroidDependencies()
     addAndroidUIDependencies()
     addJUnitTestDependencies()
