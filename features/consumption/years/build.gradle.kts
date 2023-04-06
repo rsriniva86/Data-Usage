@@ -13,6 +13,8 @@ dependencies {
 
     addAndroidDependencies()
     addAndroidUIDependencies()
+    addJUnitTestDependencies()
+    addAndroidTestDependencies()
     addComposeOfficialDependencies()
     addComposeThirdPartyDependencies()
 }
