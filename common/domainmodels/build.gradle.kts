@@ -7,7 +7,7 @@ plugins {
 }
 
 android {
-    namespace = "com.demo.datausage.core.data.datasource.remote"
+    namespace = "com.demo.datausage.common.domainmodels"
 }
 
 dependencies {
