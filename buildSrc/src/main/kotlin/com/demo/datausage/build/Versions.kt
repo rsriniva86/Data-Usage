@@ -23,5 +23,7 @@ object Versions {
     const val lottie = "4.2.0"
     const val material = "1.6.0"
     const val material3 = "1.0.1"
+    const val retrofit = "2.9.0"
+    const val retrofitLogIntercepter = "4.10.0"
 
 }

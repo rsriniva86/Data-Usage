@@ -28,11 +28,12 @@ object Dependencies {
     const val composeActivity = "androidx.activity:activity-compose:${Versions.activityCompose}"
     const val composeLottie = "com.airbnb.android:lottie-compose:${Versions.lottie}"
     const val composeNavigation = "androidx.navigation:navigation-compose:${Versions.navCompose}"
-
     const val composeUiTestJunit4 = "androidx.compose.ui:ui-test-junit4:${Versions.compose}"
     const val composeUiTestManifest = "androidx.compose.ui:ui-test-manifest:${Versions.compose}"
 
-
+    const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
+    const val retrofitGSON =  "com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
+    const val retrofitLogInterceptor = "com.squareup.okhttp3:logging-interceptor:${Versions.retrofitLogIntercepter}"
 }
 
 
