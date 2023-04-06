@@ -2,6 +2,7 @@ package com.demo.datausage
 
 import android.app.Application
 import android.content.Context
+import com.demo.datausage.core.data.datasource.remote.di.networkModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
@@ -14,6 +15,11 @@ class DataUsageApp : Application() {
         super.onCreate()
         startKoin {
             androidContext(this@DataUsageApp)
+            modules(
+                listOf(
+                    networkModule
+                )
+            )
         }
     }
 
