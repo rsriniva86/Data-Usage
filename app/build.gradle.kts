@@ -45,6 +45,7 @@ dependencies {
     implementation(project(mapOf("path" to ":common:theme")))
     implementation(project(mapOf("path" to ":features:consumption:years")))
     implementation(project(mapOf("path" to ":features:consumption:qtr")))
+    implementation(project(mapOf("path" to ":core:data:datasource:remote")))
 
     addAndroidDependencies()
     addAndroidUIDependencies()
@@ -54,4 +55,5 @@ dependencies {
     addComposeThirdPartyDependencies()
     addKotlinCoroutineDependencies()
     addDependencyInjectionDependencies()
+
 }
