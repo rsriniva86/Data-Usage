@@ -52,4 +52,6 @@ dependencies {
     addAndroidTestDependencies()
     addComposeOfficialDependencies()
     addComposeThirdPartyDependencies()
+    addKotlinCoroutineDependencies()
+    addDependencyInjectionDependencies()
 }

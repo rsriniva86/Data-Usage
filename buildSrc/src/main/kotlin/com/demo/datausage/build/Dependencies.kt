@@ -33,9 +33,11 @@ object Dependencies {
     const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
     const val retrofitGSON =  "com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
     const val retrofitLogInterceptor = "com.squareup.okhttp3:logging-interceptor:${Versions.retrofitLogIntercepter}"
-    const val koin = "org.koin:koin-android:${Versions.koin}"
-    const val koinViewModel = "org.koin:koin-android-viewmodel:${Versions.koin}"
+    const val koin = "io.insert-koin:koin-core:${Versions.koin}"
+    const val koinAndroid =  "io.insert-koin:koin-android:${Versions.koinAndroid}"
 
+    const val kotlinCoroutineAndroid = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutine}"
+    const val kotlinCoroutineCore = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutine}"
 }
 
 

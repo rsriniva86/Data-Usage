@@ -9,6 +9,11 @@ internal val androidUIDependencies = listOf(
     Dependencies.materialDesign
 )
 
+internal val kotlinCoroutineDependencies = listOf(
+    Dependencies.kotlinCoroutineAndroid,
+    Dependencies.kotlinCoroutineCore
+)
+
 internal val junitTestDependencies = listOf(
     Dependencies.junit
 )
@@ -44,5 +49,6 @@ internal val retrofitDependencies = listOf(
 
 internal val koinDependencies = listOf(
     Dependencies.koin,
-    Dependencies.koinViewModel
+    Dependencies.koinAndroid
 )
+

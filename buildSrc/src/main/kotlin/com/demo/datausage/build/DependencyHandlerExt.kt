@@ -49,3 +49,8 @@ fun DependencyHandler.addDependencyInjectionDependencies() {
         add("implementation", it)
     }
 }
+fun DependencyHandler.addKotlinCoroutineDependencies(){
+    kotlinCoroutineDependencies.forEach {
+        add("implementation", it)
+    }
+}
