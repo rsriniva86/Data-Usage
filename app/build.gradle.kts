@@ -42,9 +42,9 @@ android {
 }
 
 dependencies {
-   // implementation("androidx.compose.material:material:1.1.1")
-   // implementation("androidx.compose.foundation:foundation:1.1.1")
     implementation(project(mapOf("path" to ":common:theme")))
+    implementation(project(mapOf("path" to ":features:consumption:years")))
+    implementation(project(mapOf("path" to ":features:consumption:qtr")))
 
     addAndroidDependencies()
     addAndroidUIDependencies()
