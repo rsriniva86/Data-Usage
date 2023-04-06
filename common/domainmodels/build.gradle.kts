@@ -12,5 +12,4 @@ android {
 
 dependencies {
     addAndroidDependencies()
-    addDependencyInjectionDependencies()
 }
