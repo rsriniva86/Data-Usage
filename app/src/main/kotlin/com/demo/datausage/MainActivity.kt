@@ -8,7 +8,6 @@ import com.demo.datausage.common.theme.DataUsageMaterial3Theme
 
 class MainActivity: ComponentActivity() {
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {

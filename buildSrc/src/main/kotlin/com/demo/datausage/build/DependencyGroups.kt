@@ -35,3 +35,8 @@ internal val composeOfficialDependencies = listOf(
 internal val composeThirdPartyDependencies = listOf(
     Dependencies.composeLottie,
 )
+
+internal val retrofitDependencies = listOf(
+    Dependencies.retrofit,
+    Dependencies.retrofitGSON
+)

@@ -37,3 +37,9 @@ fun DependencyHandler.addComposeThirdPartyDependencies() {
         add("implementation", it)
     }
 }
+
+fun DependencyHandler.addRetrofitDependencies() {
+    retrofitDependencies.forEach {
+        add("implementation", it)
+    }
+}
