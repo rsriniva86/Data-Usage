@@ -9,9 +9,12 @@ android{
 
 dependencies {
     implementation(project(mapOf("path" to ":core:repository")))
+    implementation(project(mapOf("path" to ":common:domainmodels")))
 
     addAndroidDependencies()
     addAndroidUIDependencies()
+    addJUnitTestDependencies()
+    addAndroidTestDependencies()
     addComposeOfficialDependencies()
     addComposeThirdPartyDependencies()
 }
