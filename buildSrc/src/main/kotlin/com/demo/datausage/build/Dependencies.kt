@@ -35,7 +35,6 @@ object Dependencies {
     const val retrofitLogInterceptor = "com.squareup.okhttp3:logging-interceptor:${Versions.retrofitLogIntercepter}"
     const val koin = "io.insert-koin:koin-core:${Versions.koin}"
     const val koinAndroid =  "io.insert-koin:koin-android:${Versions.koinAndroid}"
-
     const val kotlinCoroutineAndroid = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutine}"
     const val kotlinCoroutineCore = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutine}"
 }
