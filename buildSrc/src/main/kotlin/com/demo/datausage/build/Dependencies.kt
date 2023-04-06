@@ -30,10 +30,12 @@ object Dependencies {
     const val composeNavigation = "androidx.navigation:navigation-compose:${Versions.navCompose}"
     const val composeUiTestJunit4 = "androidx.compose.ui:ui-test-junit4:${Versions.compose}"
     const val composeUiTestManifest = "androidx.compose.ui:ui-test-manifest:${Versions.compose}"
-
     const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
     const val retrofitGSON =  "com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
     const val retrofitLogInterceptor = "com.squareup.okhttp3:logging-interceptor:${Versions.retrofitLogIntercepter}"
+    const val koin = "org.koin:koin-android:${Versions.koin}"
+    const val koinViewModel = "org.koin:koin-android-viewmodel:${Versions.koin}"
+
 }
 
 

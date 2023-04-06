@@ -40,5 +40,9 @@ internal val retrofitDependencies = listOf(
     Dependencies.retrofit,
     Dependencies.retrofitGSON,
     Dependencies.retrofitLogInterceptor
+)
 
+internal val koinDependencies = listOf(
+    Dependencies.koin,
+    Dependencies.koinViewModel
 )

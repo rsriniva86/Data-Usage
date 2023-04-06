@@ -25,5 +25,6 @@ object Versions {
     const val material3 = "1.0.1"
     const val retrofit = "2.9.0"
     const val retrofitLogIntercepter = "4.10.0"
+    const val koin ="3.4.0"
 
 }

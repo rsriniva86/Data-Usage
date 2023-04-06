@@ -43,3 +43,9 @@ fun DependencyHandler.addRetrofitDependencies() {
         add("implementation", it)
     }
 }
+
+fun DependencyHandler.addDependencyInjectionDependencies() {
+    koinDependencies.forEach {
+        add("implementation", it)
+    }
+}
