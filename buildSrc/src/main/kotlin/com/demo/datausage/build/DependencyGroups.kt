@@ -38,5 +38,7 @@ internal val composeThirdPartyDependencies = listOf(
 
 internal val retrofitDependencies = listOf(
     Dependencies.retrofit,
-    Dependencies.retrofitGSON
+    Dependencies.retrofitGSON,
+    Dependencies.retrofitLogInterceptor
+
 )

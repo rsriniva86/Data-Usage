@@ -33,6 +33,7 @@ object Dependencies {
 
     const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
     const val retrofitGSON =  "com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
+    const val retrofitLogInterceptor = "com.squareup.okhttp3:logging-interceptor:${Versions.retrofitLogIntercepter}"
 }
 
 
