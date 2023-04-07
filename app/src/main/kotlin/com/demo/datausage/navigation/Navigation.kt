@@ -8,7 +8,9 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.demo.datausage.consumption.qtr.QtrScreen
 import com.demo.datausage.consumption.years.YearScreen
+import com.demo.datausage.consumption.years.YearScreenViewModel
 import com.demo.datausage.domainmodels.DataUsageScreens
+import org.koin.androidx.compose.getViewModel
 
 @Composable
 fun Navigation() {
@@ -16,7 +18,11 @@ fun Navigation() {
     NavHost(navController = navController,
         startDestination = DataUsageScreens.YearScreen.route) {
         composable(route = DataUsageScreens.YearScreen.route) {
-            YearScreen(navController = navController)
+            val yearScreenViewModel  = getViewModel<YearScreenViewModel>()
+            YearScreen(
+                navController = navController,
+                yearScreenViewModel = yearScreenViewModel
+            )
         }
         composable(
             route = DataUsageScreens.QtrScreen.route + "/{year}",

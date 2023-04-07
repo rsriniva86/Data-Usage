@@ -3,12 +3,11 @@ package com.demo.datausage.consumption.years
 import androidx.compose.runtime.mutableStateListOf
 import androidx.lifecycle.ViewModel
 import com.demo.datausage.core.repository.DataUsageRepository
-import com.demo.datausage.core.repository.DataUsageRepository_Impl
 import com.demo.datausage.domainmodels.YearWiseData
 
 class YearScreenViewModel (
-    private val repository: DataUsageRepository = DataUsageRepository_Impl()
-        ): ViewModel() {
+    private val repository: DataUsageRepository
+    ): ViewModel() {
 
      val list = mutableStateListOf<YearWiseData>()
 

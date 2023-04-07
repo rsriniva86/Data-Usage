@@ -2,6 +2,7 @@ package com.demo.datausage
 
 import android.app.Application
 import android.content.Context
+import com.demo.datausage.consumption.years.di.yearsModule
 import com.demo.datausage.core.data.datasource.remote.di.networkModule
 import com.demo.datausage.core.repository.di.repoModule
 import org.koin.android.ext.koin.androidContext
@@ -19,7 +20,8 @@ class DataUsageApp : Application() {
             modules(
                 listOf(
                     networkModule,
-                    repoModule
+                    repoModule,
+                    yearsModule
                 )
             )
         }

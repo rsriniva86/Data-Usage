@@ -19,19 +19,21 @@ import androidx.navigation.compose.rememberNavController
 import com.demo.datausage.domainmodels.DataUsageScreens
 import com.demo.datausage.domainmodels.Datatype
 import com.demo.datausage.domainmodels.YearWiseData
+import org.koin.androidx.compose.getViewModel
 
 @Composable
-fun YearScreen(navController: NavController) {
-    val data = provideDummyData().toList()
+fun YearScreen(
+    navController: NavController,
+    yearScreenViewModel: YearScreenViewModel
+) {
+    val data = yearScreenViewModel.list.toList()
 
     Column{
         Text(
             modifier = Modifier
-                .fillMaxWidth()
-            ,
+                .fillMaxWidth(),
             textAlign = TextAlign.Center,
             text = "Year Screen",
-
         )
         LazyColumn(modifier = Modifier.fillMaxWidth()) {
             items(data){
@@ -99,5 +101,8 @@ fun provideDummyData(): List<YearWiseData> {
 @Composable
 private fun PreviewYearScreen() {
     val navController = rememberNavController()
-    YearScreen(navController = navController)
+    YearScreen(
+        navController = navController,
+        yearScreenViewModel = getViewModel<YearScreenViewModel>()
+    )
 }

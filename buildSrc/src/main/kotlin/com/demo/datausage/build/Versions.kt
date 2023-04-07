@@ -27,6 +27,7 @@ object Versions {
     const val retrofitLogIntercepter = "4.10.0"
     const val koin ="3.4.0"
     const val koinAndroid = koin
+    const val koinAndroidXCompose = koin
     const val coroutine = "1.6.4"
 
 }
