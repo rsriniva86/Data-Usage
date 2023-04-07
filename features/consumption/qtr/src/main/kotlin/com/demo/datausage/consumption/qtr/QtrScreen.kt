@@ -69,15 +69,19 @@ private fun QuarterWiseItem(
             )
         }
         QuarterCard(
+            label ="Q1",
             data = dataItem.qOneValue
         )
         QuarterCard(
+            label ="Q2",
             data = dataItem.qTwoValue
         )
         QuarterCard(
+            label ="Q3",
             data = dataItem.qThreeValue
         )
         QuarterCard(
+            label ="Q4",
             data = dataItem.qFourValue
         )
 
@@ -85,7 +89,11 @@ private fun QuarterWiseItem(
 }
 
 @Composable
-fun QuarterCard(modifier: Modifier = Modifier, data: String) {
+fun QuarterCard(
+    modifier: Modifier = Modifier,
+    data: String,
+    label:String
+) {
     Card(
         modifier = Modifier
             .padding(all = 8.dp)
@@ -99,7 +107,7 @@ fun QuarterCard(modifier: Modifier = Modifier, data: String) {
             Row(modifier = Modifier.fillMaxWidth()) {
                 Text(
                     modifier = Modifier.fillMaxWidth(),
-                    text = "Q1 : ${data}",
+                    text = "$label : $data",
                     textAlign = TextAlign.Center
                 )
             }
