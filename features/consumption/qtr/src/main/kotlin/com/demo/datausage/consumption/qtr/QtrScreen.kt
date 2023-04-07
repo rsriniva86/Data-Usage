@@ -1,7 +1,6 @@
 package com.demo.datausage.consumption.qtr
 
 import android.annotation.SuppressLint
-import android.graphics.Color
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -85,9 +84,6 @@ fun QtrScreen(
             }
         }
     }
-
-
-
 }
 
 @Composable
@@ -133,7 +129,7 @@ fun QuarterCard(
     label:String
 ) {
     Card(
-        modifier = Modifier
+        modifier = modifier
             .padding(all = 8.dp)
             .fillMaxWidth()
     ) {

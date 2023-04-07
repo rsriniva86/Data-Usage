@@ -14,7 +14,7 @@ android{
 
 dependencies {
     implementation(project(mapOf("path" to ":core:data:datasource:remote")))
-
+    implementation(project(mapOf("path" to ":common:domainmodels")))
     addAndroidDependencies()
     addRetrofitDependencies()
 }
