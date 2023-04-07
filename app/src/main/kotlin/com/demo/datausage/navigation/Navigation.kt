@@ -25,8 +25,8 @@ fun Navigation() {
             })
         ) { entry ->
             QtrScreen(
-                navController,
-                entry.arguments?.getInt("year")
+                navController=navController,
+                year = entry.arguments?.getInt("year")
             )
         }
     }
