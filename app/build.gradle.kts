@@ -43,6 +43,7 @@ android {
 
 dependencies {
     implementation(project(mapOf("path" to ":common:theme")))
+    implementation(project(mapOf("path" to ":common:domainmodels")))
     implementation(project(mapOf("path" to ":features:consumption:years")))
     implementation(project(mapOf("path" to ":features:consumption:qtr")))
     implementation(project(mapOf("path" to ":core:data:datasource:remote")))

@@ -7,17 +7,21 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Card
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
+import com.demo.datausage.domainmodels.DataUsageScreens
 import com.demo.datausage.domainmodels.Datatype
 import com.demo.datausage.domainmodels.YearWiseData
 
 @Composable
-fun YearScreen() {
+fun YearScreen(navController: NavController) {
     val data = provideDummyData().toList()
 
     Column{
@@ -31,7 +35,10 @@ fun YearScreen() {
         )
         LazyColumn(modifier = Modifier.fillMaxWidth()) {
             items(data){
-                YearItem(dataItem = it)
+                YearItem(
+                    navController = navController,
+                    dataItem = it
+                )
             }
         }
     }
@@ -39,12 +46,19 @@ fun YearScreen() {
 
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-private fun YearItem(dataItem: YearWiseData) {
+private fun YearItem(
+    dataItem: YearWiseData,
+    navController:NavController
+) {
     Card(
         modifier = Modifier
             .padding(all = 8.dp)
-            .fillMaxWidth()
+            .fillMaxWidth(),
+        onClick = {
+            navController.navigate(DataUsageScreens.QtrScreen.route+ "/${dataItem.year}")
+        }
     ) {
         Column (modifier =Modifier.padding(all =8.dp)){
             Row {
@@ -84,5 +98,6 @@ fun provideDummyData(): List<YearWiseData> {
 @Preview
 @Composable
 private fun PreviewYearScreen() {
-    YearScreen()
+    val navController = rememberNavController()
+    YearScreen(navController = navController)
 }
