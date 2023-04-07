@@ -54,3 +54,9 @@ fun DependencyHandler.addKotlinCoroutineDependencies(){
         add("implementation", it)
     }
 }
+
+fun DependencyHandler.addDBDependencies(){
+    dbDependencies.forEach {
+        add("implementation", it)
+    }
+}

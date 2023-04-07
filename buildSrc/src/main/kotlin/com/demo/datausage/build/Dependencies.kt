@@ -38,6 +38,9 @@ object Dependencies {
     const val koinAndroidXCompose= "io.insert-koin:koin-androidx-compose:${Versions.koinAndroidXCompose}"
     const val kotlinCoroutineAndroid = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutine}"
     const val kotlinCoroutineCore = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutine}"
+    const val roomRuntime = "androidx.room:room-runtime:${Versions.room}"
+    const val roomKtx = "androidx.room:room-ktx:${Versions.room}"
+    const val roomCompiler = "androidx.room:room-compiler:${Versions.room}"
 }
 
 

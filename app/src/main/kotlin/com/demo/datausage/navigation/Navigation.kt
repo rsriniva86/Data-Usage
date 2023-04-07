@@ -28,14 +28,14 @@ fun Navigation() {
         composable(
             route = DataUsageScreens.QtrScreen.route + "/{year}",
             arguments = listOf(navArgument(name = "year") {
-                type = NavType.IntType
+                type = NavType.LongType
             })
         ) { entry ->
             val qtrScreenViewModel  = getViewModel<QtrScreenViewModel>()
 
             QtrScreen(
                 navController=navController,
-                year = entry.arguments?.getInt("year"),
+                year = entry.arguments?.getLong("year"),
                 qtrScreenViewModel = qtrScreenViewModel
             )
         }

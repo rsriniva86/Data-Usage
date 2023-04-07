@@ -1,4 +1,5 @@
 import com.demo.datausage.build.addAndroidDependencies
+import com.demo.datausage.build.addDBDependencies
 import com.demo.datausage.build.addDependencyInjectionDependencies
 import com.demo.datausage.build.addRetrofitDependencies
 
@@ -13,4 +14,5 @@ android {
 dependencies {
     addAndroidDependencies()
     addDependencyInjectionDependencies()
+    addDBDependencies()
 }

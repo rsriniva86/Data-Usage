@@ -53,3 +53,9 @@ internal val koinDependencies = listOf(
     Dependencies.koinAndroidXCompose
 )
 
+internal val dbDependencies = listOf(
+    Dependencies.roomRuntime,
+    Dependencies.roomKtx,
+    Dependencies.roomCompiler
+)
+
