@@ -151,7 +151,7 @@ fun QuarterCard(
 
 private fun provideDummyData(): List<QuarterWiseData> {
 
-    val startYear = 2000
+    val startYear = 2000L
     val startValue = 100
 
     val list = mutableListOf<QuarterWiseData>()

@@ -83,7 +83,7 @@ private fun YearItem(
 
 fun provideDummyData(): List<YearWiseData> {
 
-    val startYear = 2000
+    val startYear = 2000L
     val startValue = 100
 
     val list = mutableListOf<YearWiseData>()
