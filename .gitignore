@@ -88,3 +88,4 @@ lint/tmp/
 .idea/kotlinc.xml
 .idea/misc.xml
 .idea/jarRepositories.xml
+.idea/inspectionProfiles/Project_Default.xml
