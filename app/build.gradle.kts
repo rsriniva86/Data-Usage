@@ -48,6 +48,7 @@ dependencies {
     implementation(project(mapOf("path" to ":features:consumption:qtr")))
     implementation(project(mapOf("path" to ":core:repository")))
     implementation(project(mapOf("path" to ":core:data:datasource:remote")))
+    implementation(project(mapOf("path" to ":core:data:datasource:local")))
 
     addAndroidDependencies()
     addAndroidUIDependencies()
