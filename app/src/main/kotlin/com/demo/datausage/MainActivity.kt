@@ -5,6 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.material3.Text
 import com.demo.datausage.common.theme.DataUsageMaterial3Theme
+import com.demo.datausage.consumption.qtr.QtrScreen
 import com.demo.datausage.consumption.years.YearScreen
 
 class MainActivity: ComponentActivity() {
@@ -13,7 +14,7 @@ class MainActivity: ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             DataUsageMaterial3Theme {
-                YearScreen()
+                QtrScreen()
             }
         }
     }
