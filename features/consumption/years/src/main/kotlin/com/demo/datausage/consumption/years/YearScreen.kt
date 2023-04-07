@@ -10,6 +10,7 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -19,19 +20,24 @@ import androidx.navigation.compose.rememberNavController
 import com.demo.datausage.domainmodels.DataUsageScreens
 import com.demo.datausage.domainmodels.Datatype
 import com.demo.datausage.domainmodels.YearWiseData
+import org.koin.androidx.compose.getViewModel
 
 @Composable
-fun YearScreen(navController: NavController) {
-    val data = provideDummyData().toList()
+fun YearScreen(
+    navController: NavController,
+    yearScreenViewModel: YearScreenViewModel
+) {
+    val data = yearScreenViewModel.list.toList()
+    LaunchedEffect(Unit){
+        yearScreenViewModel.getYearData()
+    }
 
     Column{
         Text(
             modifier = Modifier
-                .fillMaxWidth()
-            ,
+                .fillMaxWidth(),
             textAlign = TextAlign.Center,
             text = "Year Screen",
-
         )
         LazyColumn(modifier = Modifier.fillMaxWidth()) {
             items(data){
@@ -75,29 +81,12 @@ private fun YearItem(
 
 }
 
-fun provideDummyData(): List<YearWiseData> {
-
-    val startYear = 2000
-    val startValue = 100
-
-    val list = mutableListOf<YearWiseData>()
-
-    for (index in 1..22) {
-        val value = startValue + index
-        val year = startYear + index
-        list.add(
-            YearWiseData(
-                year = year, dataType = Datatype.MOBILE_DATA_USAGE, value = "$value"
-            )
-        )
-    }
-    return list
-
-}
-
 @Preview
 @Composable
 private fun PreviewYearScreen() {
     val navController = rememberNavController()
-    YearScreen(navController = navController)
+    YearScreen(
+        navController = navController,
+        yearScreenViewModel = getViewModel<YearScreenViewModel>()
+    )
 }

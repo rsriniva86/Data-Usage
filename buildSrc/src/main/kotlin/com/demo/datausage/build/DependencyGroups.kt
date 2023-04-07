@@ -49,6 +49,7 @@ internal val retrofitDependencies = listOf(
 
 internal val koinDependencies = listOf(
     Dependencies.koin,
-    Dependencies.koinAndroid
+    Dependencies.koinAndroid,
+    Dependencies.koinAndroidXCompose
 )
 

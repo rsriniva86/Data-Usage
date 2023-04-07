@@ -1,7 +1,6 @@
 package com.demo.datausage.consumption.qtr
 
 import android.annotation.SuppressLint
-import android.graphics.Color
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -22,6 +21,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
@@ -32,16 +32,20 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.demo.datausage.domainmodels.Datatype
 import com.demo.datausage.domainmodels.QuarterWiseData
+import org.koin.androidx.compose.getViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun QtrScreen(
     navController: NavController,
-    year: Int?
+    year: Int?,
+    qtrScreenViewModel: QtrScreenViewModel
 ) {
-    val data = provideDummyData().toList()
-
+    val data = qtrScreenViewModel.list.toList()
+    LaunchedEffect(Unit){
+        qtrScreenViewModel.getQuarterData()
+    }
     Scaffold(topBar = {
         TopAppBar(
             title = {
@@ -85,9 +89,6 @@ fun QtrScreen(
             }
         }
     }
-
-
-
 }
 
 @Composable
@@ -133,7 +134,7 @@ fun QuarterCard(
     label:String
 ) {
     Card(
-        modifier = Modifier
+        modifier = modifier
             .padding(all = 8.dp)
             .fillMaxWidth()
     ) {
@@ -155,7 +156,7 @@ fun QuarterCard(
 
 private fun provideDummyData(): List<QuarterWiseData> {
 
-    val startYear = 2000
+    val startYear = 2000L
     val startValue = 100
 
     val list = mutableListOf<QuarterWiseData>()
@@ -188,5 +189,9 @@ private fun provideDummyData(): List<QuarterWiseData> {
 @Composable
 private fun PreviewQtrScreen() {
     val navController = rememberNavController()
-    QtrScreen(navController = navController, year = 2010)
+    QtrScreen(
+        navController = navController,
+        year = 2010,
+        qtrScreenViewModel = getViewModel()
+    )
 }
