@@ -2,6 +2,7 @@ package com.demo.datausage
 
 import android.app.Application
 import android.content.Context
+import com.demo.datausage.consumption.qtr.di.quarterModule
 import com.demo.datausage.consumption.years.di.yearsModule
 import com.demo.datausage.core.data.datasource.remote.di.networkModule
 import com.demo.datausage.core.repository.di.repoModule
@@ -21,7 +22,8 @@ class DataUsageApp : Application() {
                 listOf(
                     networkModule,
                     repoModule,
-                    yearsModule
+                    yearsModule,
+                    quarterModule
                 )
             )
         }

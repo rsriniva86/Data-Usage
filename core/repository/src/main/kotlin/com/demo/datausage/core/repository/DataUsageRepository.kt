@@ -2,6 +2,7 @@ package com.demo.datausage.core.repository
 
 import android.util.Log
 import com.demo.datausage.core.data.datasource.remote.DataUsageAPI
+import com.demo.datausage.core.repository.mappers.QuarterWiseDataMapper
 import com.demo.datausage.core.repository.mappers.YearWiseDataMapper
 import com.demo.datausage.domainmodels.Datatype
 import com.demo.datausage.domainmodels.QuarterWiseData
@@ -12,7 +13,7 @@ import kotlinx.coroutines.flow.flow
 interface DataUsageRepository {
 
     fun getYearWiseData(): Flow<List<YearWiseData>>
-    fun getQtrWiseData(): Flow<QuarterWiseData>
+    fun getQtrWiseData(): Flow<List<QuarterWiseData>>
 
 }
 
@@ -26,6 +27,11 @@ class DataUsageRepository_Impl(
         emit(YearWiseDataMapper.mapToYearWiseDataList(response))
     }
 
-    override fun getQtrWiseData(): Flow<QuarterWiseData> = flow {
+    override fun getQtrWiseData(): Flow<List<QuarterWiseData>> = flow {
+        val resource_id = "a807b7ab-6cad-4aa6-87d0-e283a7353a0f"
+        val response=service.getDataUsage(resource_id)
+        Log.d("DEMO","$response")
+        emit(QuarterWiseDataMapper.mapToQuarterWiseDataList(response))
+
     }
 }

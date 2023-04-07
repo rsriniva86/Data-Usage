@@ -81,26 +81,6 @@ private fun YearItem(
 
 }
 
-fun provideDummyData(): List<YearWiseData> {
-
-    val startYear = 2000L
-    val startValue = 100
-
-    val list = mutableListOf<YearWiseData>()
-
-    for (index in 1..22) {
-        val value = startValue + index
-        val year = startYear + index
-        list.add(
-            YearWiseData(
-                year = year, dataType = Datatype.MOBILE_DATA_USAGE, value = "$value"
-            )
-        )
-    }
-    return list
-
-}
-
 @Preview
 @Composable
 private fun PreviewYearScreen() {

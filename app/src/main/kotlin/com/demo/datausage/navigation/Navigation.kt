@@ -7,6 +7,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.demo.datausage.consumption.qtr.QtrScreen
+import com.demo.datausage.consumption.qtr.QtrScreenViewModel
 import com.demo.datausage.consumption.years.YearScreen
 import com.demo.datausage.consumption.years.YearScreenViewModel
 import com.demo.datausage.domainmodels.DataUsageScreens
@@ -30,9 +31,12 @@ fun Navigation() {
                 type = NavType.IntType
             })
         ) { entry ->
+            val qtrScreenViewModel  = getViewModel<QtrScreenViewModel>()
+
             QtrScreen(
                 navController=navController,
-                year = entry.arguments?.getInt("year")
+                year = entry.arguments?.getInt("year"),
+                qtrScreenViewModel = qtrScreenViewModel
             )
         }
     }
