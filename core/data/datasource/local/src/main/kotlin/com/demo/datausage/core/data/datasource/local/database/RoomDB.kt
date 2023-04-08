@@ -14,7 +14,7 @@ import com.demo.datausage.core.data.datasource.local.database.entities.MobileDat
     exportSchema = false
 )
 
-abstract class DataUsageDB : RoomDatabase() {
+abstract class RoomDB : RoomDatabase() {
 
     abstract fun dataUsageDao(): DataUsageDao
 

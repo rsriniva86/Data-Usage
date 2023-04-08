@@ -18,8 +18,11 @@ interface DataUsageDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(db: MobileDataUsageDB): Long
 
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertAll(db: List<MobileDataUsageDB>)
+
     @Update(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun update(activityDB: MobileDataUsageDB)
+    suspend fun update(db: MobileDataUsageDB)
 
     @Query("DELETE from mobile_data_usage")
     suspend fun deleteAll()

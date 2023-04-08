@@ -15,5 +15,5 @@ data class MobileDataUsageDB(
     @ColumnInfo(name="quarter")
     val quarter:String,
     @ColumnInfo(name="value")
-    val value:BigDecimal
+    val value:Double
 )

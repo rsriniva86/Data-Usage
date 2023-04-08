@@ -1,9 +1,9 @@
 package com.demo.datausage.core.repository
 
 import android.util.Log
-import com.demo.datausage.core.data.datasource.local.database.DataUsageDB
 import com.demo.datausage.core.data.datasource.local.database.dao.DataUsageDao
 import com.demo.datausage.core.data.datasource.remote.DataUsageAPI
+import com.demo.datausage.core.repository.mappers.DBDataMapper
 import com.demo.datausage.core.repository.mappers.QuarterWiseDataMapper
 import com.demo.datausage.core.repository.mappers.YearWiseDataMapper
 import com.demo.datausage.domainmodels.QuarterWiseData
@@ -30,10 +30,17 @@ class DataUsageRepository_Impl(
             .fetchAllData()
             .first()
 
-        emit(YearWiseDataMapper.mapToYearWiseDataList(dbData))
+        if(dbData.isNotEmpty()) {
+            emit(YearWiseDataMapper.mapToYearWiseDataList(dbData))
+        }
         val response=service.getDataUsage(resource_id)
         Log.d("DEMO","$response")
-        emit(YearWiseDataMapper.mapToYearWiseDataList(response))
+        val dbDataListFromResponse = DBDataMapper.mapFromResponse(response)
+        if(dbDataListFromResponse.isNotEmpty()){
+            dataUsageDao.deleteAll()
+            dataUsageDao.insertAll(dbDataListFromResponse)
+        }
+        emit(YearWiseDataMapper.mapToYearWiseDataList(dbData))
     }
 
     override fun getQtrWiseData(): Flow<List<QuarterWiseData>> = flow {
