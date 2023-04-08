@@ -3,8 +3,9 @@ package com.demo.datausage.consumption.years
 import androidx.compose.runtime.mutableStateListOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.demo.datausage.core.repository.DataUsageRepository
+import com.demo.datausage.core.repository.datausage.DataUsageRepository
 import com.demo.datausage.domainmodels.YearWiseData
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class YearScreenViewModel (
@@ -14,7 +15,7 @@ class YearScreenViewModel (
      val list = mutableStateListOf<YearWiseData>()
 
     fun getYearData(){
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO){
             getData()
         }
     }
