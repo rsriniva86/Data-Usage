@@ -29,5 +29,6 @@ object Versions {
     const val koinAndroid = koin
     const val koinAndroidXCompose = koin
     const val coroutine = "1.6.4"
+    const val room = "2.5.1"
 
 }

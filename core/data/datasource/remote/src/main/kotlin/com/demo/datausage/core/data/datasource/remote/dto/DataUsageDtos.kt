@@ -18,7 +18,7 @@ data class DataUsageResult(
 
 data class DataUsageRecord(
     @SerializedName("volume_of_mobile_data")
-    val volume:BigDecimal,
+    val volume:Double,
     @SerializedName("quarter")
     val quarter:String,
     @SerializedName("_id")

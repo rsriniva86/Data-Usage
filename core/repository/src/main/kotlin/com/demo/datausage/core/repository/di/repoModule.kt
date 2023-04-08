@@ -6,6 +6,6 @@ import org.koin.dsl.module
 
 val repoModule = module {
     factory<DataUsageRepository> {
-        DataUsageRepository_Impl(get())
+        DataUsageRepository_Impl(get(),get())
     }
 }

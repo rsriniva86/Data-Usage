@@ -2,6 +2,7 @@ import com.demo.datausage.build.*
 
 plugins {
     id("com.android.application")
+    id ("org.jetbrains.kotlin.android");
     id("kotlin-android")
     id("kotlin-kapt")
 }
@@ -48,6 +49,7 @@ dependencies {
     implementation(project(mapOf("path" to ":features:consumption:qtr")))
     implementation(project(mapOf("path" to ":core:repository")))
     implementation(project(mapOf("path" to ":core:data:datasource:remote")))
+    implementation(project(mapOf("path" to ":core:data:datasource:local")))
 
     addAndroidDependencies()
     addAndroidUIDependencies()
@@ -57,5 +59,5 @@ dependencies {
     addComposeThirdPartyDependencies()
     addKotlinCoroutineDependencies()
     addDependencyInjectionDependencies()
-
+    addDBDependencies()
 }

@@ -1,4 +1,5 @@
 import com.demo.datausage.build.addAndroidDependencies
+import com.demo.datausage.build.addDBDependencies
 import com.demo.datausage.build.addDependencyInjectionDependencies
 import com.demo.datausage.build.addRetrofitDependencies
 
@@ -7,10 +8,11 @@ plugins {
 }
 
 android {
-    namespace = "com.demo.datausage.core.data.datasource.remote"
+    namespace = "com.demo.datausage.core.data.datasource.local"
 }
 
 dependencies {
     addAndroidDependencies()
     addDependencyInjectionDependencies()
+    addDBDependencies()
 }

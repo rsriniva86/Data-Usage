@@ -54,3 +54,14 @@ fun DependencyHandler.addKotlinCoroutineDependencies(){
         add("implementation", it)
     }
 }
+
+fun DependencyHandler.addDBDependencies(){
+    dbDependencies.forEach {
+        if(it == Dependencies.roomCompiler){
+            add("kapt",it)
+        }else {
+            add("implementation", it)
+        }
+
+    }
+}

@@ -39,7 +39,7 @@ import org.koin.androidx.compose.getViewModel
 @Composable
 fun QtrScreen(
     navController: NavController,
-    year: Int?,
+    year: Long?,
     qtrScreenViewModel: QtrScreenViewModel
 ) {
     val data = qtrScreenViewModel.list.toList()
