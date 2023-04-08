@@ -23,12 +23,17 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.input.nestedscroll.NestedScrollConnection
+import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.Velocity
 import androidx.compose.ui.unit.dp
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import androidx.navigation.NavController
@@ -36,6 +41,7 @@ import androidx.navigation.compose.rememberNavController
 import com.demo.datausage.common.logging.EventLogMessenger
 import com.demo.datausage.domainmodels.Datatype
 import com.demo.datausage.domainmodels.QuarterWiseData
+import kotlinx.coroutines.launch
 import org.koin.androidx.compose.getViewModel
 import timber.log.Timber
 
@@ -50,16 +56,41 @@ fun QtrScreen(
     val data = qtrScreenViewModel.list.toList()
     val context = LocalContext.current
     val listState = rememberLazyListState()
+    val coroutineScope = rememberCoroutineScope()
     LaunchedEffect(Unit){
         EventLogMessenger.sendMessage(context,"Year Detail Screen (Quarter wise) started")
         qtrScreenViewModel.currentYear.value = year
         qtrScreenViewModel.getQuarterData()
     }
     LaunchedEffect(qtrScreenViewModel.index.value){
-        Timber.d("Current Year Index Changed:${qtrScreenViewModel.index.value}")
-        listState.scrollToItem(index = qtrScreenViewModel.index.value)
+        if(listState.firstVisibleItemIndex != qtrScreenViewModel.index.value) {
+            EventLogMessenger.sendMessage(
+                context, "Year Detail Screen (Quarter wise) " +
+                        "showing for year:${qtrScreenViewModel.currentYear.value}"
+            )
+            listState.scrollToItem(index = qtrScreenViewModel.index.value)
+        }
     }
-    
+    val nestedScrollConnection = remember {
+        object : NestedScrollConnection {
+            override suspend fun onPostFling(consumed: Velocity, available: Velocity): Velocity {
+                // On scroll ended detection
+                coroutineScope.launch {
+                    if(listState.firstVisibleItemIndex != qtrScreenViewModel.index.value){
+                        qtrScreenViewModel.setCurrentYear(
+                            listState.firstVisibleItemIndex
+                        )
+                        EventLogMessenger.sendMessage(
+                            context, "Year Detail Screen (Quarter wise) " +
+                                    "showing for year:${qtrScreenViewModel.currentYear.value}"
+                        )
+                    }
+                }
+
+                return super.onPostFling(consumed, available)
+            }
+        }
+    }
     Scaffold(topBar = {
         TopAppBar(
             title = {
@@ -88,6 +119,7 @@ fun QtrScreen(
         Column {
             LazyRow(
                 modifier = Modifier
+                    .nestedScroll(nestedScrollConnection)
                     .fillMaxSize()
                     .padding(top = 160.dp),
                 state = listState

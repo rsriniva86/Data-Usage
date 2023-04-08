@@ -16,7 +16,7 @@ class QtrScreenViewModel(
     val list = mutableStateListOf<QuarterWiseData>()
     val index = mutableStateOf(0)
     val currentYear = mutableStateOf(2004L)
-    fun getIndexOfYear(year:Long)= list.indexOfFirst{
+    private fun getIndexOfYear(year:Long)= list.indexOfFirst{
         it.year == year
     }
     fun setCurrentYear(currentIndex: Int) {
@@ -38,11 +38,9 @@ class QtrScreenViewModel(
             .collect{
                 list.clear()
                 list.addAll(it)
-                Timber.d("Current Year:${currentYear.value}")
                 val indexToMove = getIndexOfYear(currentYear.value)
                 if( indexToMove != -1){
                     index.value = indexToMove
-                    Timber.d("Current Year Index:${index.value}")
                 }
             }
     }
