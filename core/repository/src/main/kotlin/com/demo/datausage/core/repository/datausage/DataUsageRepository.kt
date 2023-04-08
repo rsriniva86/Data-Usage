@@ -37,13 +37,12 @@ class DataUsageRepository_Impl(
         when (connectionManager.isNetworkAvailable()) {
             true -> {
                 val response = service.getDataUsage(resource_id)
-                Log.d("DEMO", "$response")
                 val dbDataListFromResponse = DBDataMapper.mapFromResponse(response)
                 if (dbDataListFromResponse.isNotEmpty()) {
                     dataUsageDao.deleteAll()
                     dataUsageDao.insertAll(dbDataListFromResponse)
                 }
-                emit(YearWiseDataMapper.mapToYearWiseDataList(dbData))
+                emit(YearWiseDataMapper.mapToYearWiseDataList(dbDataListFromResponse))
             }
 
             false -> {
@@ -66,6 +65,7 @@ class DataUsageRepository_Impl(
                 val response = service.getDataUsage(resource_id)
                 Log.d("DEMO", "$response")
                 val dbDataListFromResponse = DBDataMapper.mapFromResponse(response)
+                Log.d("DEMO", "$dbDataListFromResponse")
                 if (dbDataListFromResponse.isNotEmpty()) {
                     dataUsageDao.deleteAll()
                     dataUsageDao.insertAll(dbDataListFromResponse)
