@@ -35,7 +35,7 @@ fun Navigation() {
 
             QtrScreen(
                 navController=navController,
-                year = entry.arguments?.getLong("year"),
+                year = entry.arguments?.getLong("year")?:2004,
                 qtrScreenViewModel = qtrScreenViewModel
             )
         }

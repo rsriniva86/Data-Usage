@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.Card
@@ -36,21 +37,29 @@ import com.demo.datausage.common.logging.EventLogMessenger
 import com.demo.datausage.domainmodels.Datatype
 import com.demo.datausage.domainmodels.QuarterWiseData
 import org.koin.androidx.compose.getViewModel
+import timber.log.Timber
 
 @OptIn(ExperimentalMaterial3Api::class)
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun QtrScreen(
     navController: NavController,
-    year: Long?,
+    year: Long,
     qtrScreenViewModel: QtrScreenViewModel
 ) {
     val data = qtrScreenViewModel.list.toList()
     val context = LocalContext.current
+    val listState = rememberLazyListState()
     LaunchedEffect(Unit){
         EventLogMessenger.sendMessage(context,"Year Detail Screen (Quarter wise) started")
+        qtrScreenViewModel.currentYear.value = year
         qtrScreenViewModel.getQuarterData()
     }
+    LaunchedEffect(qtrScreenViewModel.index.value){
+        Timber.d("Current Year Index Changed:${qtrScreenViewModel.index.value}")
+        listState.scrollToItem(index = qtrScreenViewModel.index.value)
+    }
+    
     Scaffold(topBar = {
         TopAppBar(
             title = {
@@ -77,9 +86,11 @@ fun QtrScreen(
         )
     }) {
         Column {
-            LazyRow(modifier = Modifier
-                .fillMaxSize()
-                .padding(top = 160.dp)
+            LazyRow(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(top = 160.dp),
+                state = listState
             ) {
                 items(
                     data
