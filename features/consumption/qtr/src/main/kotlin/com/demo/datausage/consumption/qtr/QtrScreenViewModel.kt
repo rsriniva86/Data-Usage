@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.demo.datausage.core.repository.datausage.DataUsageRepository
 import com.demo.datausage.domainmodels.QuarterWiseData
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class QtrScreenViewModel(
@@ -12,7 +13,7 @@ class QtrScreenViewModel(
 ): ViewModel()  {
     val list = mutableStateListOf<QuarterWiseData>()
     fun getQuarterData(){
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             getData()
         }
     }
