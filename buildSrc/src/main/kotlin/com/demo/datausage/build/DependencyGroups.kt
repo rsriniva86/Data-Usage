@@ -2,7 +2,8 @@ package com.demo.datausage.build
 
 internal val androidDependencies = listOf(
     Dependencies.appCompat,
-    Dependencies.ktx
+    Dependencies.ktx,
+    Dependencies.timber
 )
 
 internal val androidUIDependencies = listOf(
