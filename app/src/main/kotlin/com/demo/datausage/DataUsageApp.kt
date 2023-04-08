@@ -14,6 +14,7 @@ import org.koin.android.ext.android.inject
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.GlobalContext
 import org.koin.core.context.startKoin
+import timber.log.Timber
 
 class DataUsageApp : Application() {
 
@@ -38,7 +39,7 @@ class DataUsageApp : Application() {
                 )
             )
             eventlog.register()
-
+            Timber.plant(Timber.DebugTree())
         }
     }
 

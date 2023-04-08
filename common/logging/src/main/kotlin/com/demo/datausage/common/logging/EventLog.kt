@@ -13,6 +13,7 @@ private const val EVENT_LOG_EXTRA_MESSAGE = "EventLogMessage"
 interface EventLogReceiver{
     fun register()
     fun unregister()
+
 }
 @Suppress("DEPRECATION")
 class EventLogReceiver_Impl(
@@ -24,7 +25,7 @@ class EventLogReceiver_Impl(
             intent?.also {
                 val message=it.getStringExtra(EVENT_LOG_EXTRA_MESSAGE)
                 message?.let{ logMessage->
-                    Timber.d(logMessage)
+                    Timber.d("Event:$logMessage")
                 }
             }
         }
@@ -40,4 +41,14 @@ class EventLogReceiver_Impl(
         LocalBroadcastManager.getInstance(context).unregisterReceiver(broadcast)
     }
 
+}
+
+object EventLogMessenger {
+    fun sendMessage(context: Context,message: String){
+        val intent = Intent(EVENT_LOG_INTENT_ACTION)
+        intent.also {
+            it.putExtra(EVENT_LOG_EXTRA_MESSAGE,message)
+        }
+        LocalBroadcastManager.getInstance(context).sendBroadcast(intent)
+    }
 }

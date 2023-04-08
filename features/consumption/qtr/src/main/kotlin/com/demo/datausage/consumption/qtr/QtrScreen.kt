@@ -24,12 +24,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import com.demo.datausage.common.logging.EventLogMessenger
 import com.demo.datausage.domainmodels.Datatype
 import com.demo.datausage.domainmodels.QuarterWiseData
 import org.koin.androidx.compose.getViewModel
@@ -43,7 +46,9 @@ fun QtrScreen(
     qtrScreenViewModel: QtrScreenViewModel
 ) {
     val data = qtrScreenViewModel.list.toList()
+    val context = LocalContext.current
     LaunchedEffect(Unit){
+        EventLogMessenger.sendMessage(context,"Year Detail Screen (Quarter wise) started")
         qtrScreenViewModel.getQuarterData()
     }
     Scaffold(topBar = {

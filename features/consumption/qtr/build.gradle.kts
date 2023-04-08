@@ -10,6 +10,7 @@ android{
 dependencies {
     implementation(project(mapOf("path" to ":core:repository")))
     implementation(project(mapOf("path" to ":common:domainmodels")))
+    implementation(project(mapOf("path" to ":common:logging")))
 
     addAndroidDependencies()
     addAndroidUIDependencies()
