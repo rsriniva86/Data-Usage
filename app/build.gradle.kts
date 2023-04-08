@@ -2,6 +2,7 @@ import com.demo.datausage.build.*
 
 plugins {
     id("com.android.application")
+    id ("org.jetbrains.kotlin.android");
     id("kotlin-android")
     id("kotlin-kapt")
 }
@@ -58,5 +59,5 @@ dependencies {
     addComposeThirdPartyDependencies()
     addKotlinCoroutineDependencies()
     addDependencyInjectionDependencies()
-
+    addDBDependencies()
 }
