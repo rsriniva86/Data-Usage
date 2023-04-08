@@ -86,10 +86,12 @@ object YearWiseDataMapper{
 
 object QuarterWiseDataMapper {
 
-    fun mapToQuarterWiseDataList(response: DataUsageResponse): List<QuarterWiseData> {
-
+    fun mapToQuarterWiseDataList(dbData: List<MobileDataUsageDB>): List<QuarterWiseData> {
+        val groupedList= internalMappingToGroupedQuarterSpecificData(dbData = dbData)
+        return groupedDataToQuarterWiseDataList(groupedList)
+    }
+    private fun groupedDataToQuarterWiseDataList(groupedList: Map<Long, List<QuarterSpecificData>>): List<QuarterWiseData> {
         val quarterWiseDataList = mutableListOf<QuarterWiseData>()
-        val groupedList = internalMappingToGroupedQuarterSpecificData(response = response)
         groupedList.forEach { (year, data) ->
             var q1Value: String = ""
             var q2Value: String = ""

@@ -44,9 +44,21 @@ class DataUsageRepository_Impl(
     }
 
     override fun getQtrWiseData(): Flow<List<QuarterWiseData>> = flow {
+        val dbData = dataUsageDao
+            .fetchAllData()
+            .first()
+
+        if(dbData.isNotEmpty()) {
+            emit(QuarterWiseDataMapper.mapToQuarterWiseDataList(dbData))
+        }
         val response=service.getDataUsage(resource_id)
         Log.d("DEMO","$response")
-        emit(QuarterWiseDataMapper.mapToQuarterWiseDataList(response))
+        val dbDataListFromResponse = DBDataMapper.mapFromResponse(response)
+        if(dbDataListFromResponse.isNotEmpty()){
+            dataUsageDao.deleteAll()
+            dataUsageDao.insertAll(dbDataListFromResponse)
+        }
+        emit(QuarterWiseDataMapper.mapToQuarterWiseDataList(dbData))
 
     }
 }
