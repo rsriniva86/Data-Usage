@@ -3,7 +3,7 @@ package com.demo.datausage.consumption.years
 import androidx.compose.runtime.mutableStateListOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.demo.datausage.core.repository.DataUsageRepository
+import com.demo.datausage.core.repository.datausage.DataUsageRepository
 import com.demo.datausage.domainmodels.YearWiseData
 import kotlinx.coroutines.launch
 
