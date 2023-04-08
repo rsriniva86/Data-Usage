@@ -9,8 +9,9 @@ interface ConnectionManager {
     fun isNetworkAvailable(): Boolean
 }
 
-class ConnectionManager_Impl  (context: Context) : ConnectionManager {
-    private val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+class ConnectionManager_Impl(context: Context) : ConnectionManager {
+    private val connectivityManager =
+        context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
 
     override fun isNetworkAvailable(): Boolean {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {

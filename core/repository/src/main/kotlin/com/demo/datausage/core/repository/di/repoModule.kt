@@ -9,9 +9,9 @@ import org.koin.dsl.module
 
 val repoModule = module {
     factory<DataUsageRepository> {
-        DataUsageRepository_Impl(get(),get(),get())
+        DataUsageRepository_Impl(get(), get(), get())
     }
-    single<ConnectionManager>{
+    single<ConnectionManager> {
         ConnectionManager_Impl(get())
     }
 }

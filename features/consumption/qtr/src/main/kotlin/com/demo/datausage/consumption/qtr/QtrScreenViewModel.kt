@@ -5,7 +5,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.demo.datausage.core.repository.datausage.DataUsageRepository
 import com.demo.datausage.domainmodels.QuarterWiseData
-import com.demo.datausage.domainmodels.YearWiseData
 import kotlinx.coroutines.launch
 
 class QtrScreenViewModel(

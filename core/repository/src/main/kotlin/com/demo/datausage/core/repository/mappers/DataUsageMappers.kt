@@ -9,26 +9,27 @@ import com.demo.datausage.domainmodels.YearWiseData
 import java.math.BigDecimal
 
 
-enum class Quarter{
+enum class Quarter {
     Q1,
     Q2,
     Q3,
     Q4,
     UNKNOWN
 }
+
 data class QuarterSpecificData(
-    val year:Long,
-    val quarter:Quarter,
-    val value:String
+    val year: Long,
+    val quarter: Quarter,
+    val value: String
 )
 
 
-object DBDataMapper{
-    fun mapFromResponse(response:DataUsageResponse):List<MobileDataUsageDB>{
+object DBDataMapper {
+    fun mapFromResponse(response: DataUsageResponse): List<MobileDataUsageDB> {
 
         val dbList = mutableListOf<MobileDataUsageDB>()
         response.result?.records?.forEach {
-            Log.d("DEMO","QTR:${it.quarter}")
+            Log.d("DEMO", "QTR:${it.quarter}")
             val year = it.quarter.substring(0, 4).toLongOrNull() ?: 0L
             val qtr = when (it.quarter.substring(5)) {
                 "Q1" -> Quarter.Q1
@@ -44,27 +45,29 @@ object DBDataMapper{
                     year = year,
                     quarter = qtr.name
                 )
-                Log.d("DEMO","$dbData")
+                Log.d("DEMO", "$dbData")
 
                 dbList.add(dbData)
             }
         }
-        Log.d("DEMO","$dbList")
+        Log.d("DEMO", "$dbList")
 
         return dbList
 
     }
 }
-object YearWiseDataMapper{
+
+object YearWiseDataMapper {
 
     fun mapToYearWiseDataList(dbData: List<MobileDataUsageDB>): List<YearWiseData> {
-        val groupedList= internalMappingToGroupedQuarterSpecificData(dbData = dbData)
-        return  groupedDataToYearWiseDataList(groupedList)
+        val groupedList = internalMappingToGroupedQuarterSpecificData(dbData = dbData)
+        return groupedDataToYearWiseDataList(groupedList)
     }
+
     private fun groupedDataToYearWiseDataList(groupedList: Map<Long, List<QuarterSpecificData>>): List<YearWiseData> {
         val yearWiseDataList = mutableListOf<YearWiseData>()
         groupedList.forEach { (year, data) ->
-            var value :BigDecimal = BigDecimal.valueOf(0)
+            var value: BigDecimal = BigDecimal.valueOf(0)
             data.forEach {
                 value += it.value.toBigDecimal()
             }
@@ -77,7 +80,7 @@ object YearWiseDataMapper{
                 )
             )
         }
-        Log.d("TAG","$yearWiseDataList")
+        Log.d("TAG", "$yearWiseDataList")
         return yearWiseDataList
     }
 
@@ -87,9 +90,10 @@ object YearWiseDataMapper{
 object QuarterWiseDataMapper {
 
     fun mapToQuarterWiseDataList(dbData: List<MobileDataUsageDB>): List<QuarterWiseData> {
-        val groupedList= internalMappingToGroupedQuarterSpecificData(dbData = dbData)
+        val groupedList = internalMappingToGroupedQuarterSpecificData(dbData = dbData)
         return groupedDataToQuarterWiseDataList(groupedList)
     }
+
     private fun groupedDataToQuarterWiseDataList(groupedList: Map<Long, List<QuarterSpecificData>>): List<QuarterWiseData> {
         val quarterWiseDataList = mutableListOf<QuarterWiseData>()
         groupedList.forEach { (year, data) ->
@@ -143,9 +147,9 @@ private fun internalMappingToGroupedQuarterSpecificData(dbData: List<MobileDataU
 
     val qtrSpecificList = mutableListOf<QuarterSpecificData>()
     dbData.forEach {
-        Log.d("DEMO","QTR:${it.quarter}")
+        Log.d("DEMO", "QTR:${it.quarter}")
         val year = it.year
-        val qtr= when(it.quarter){
+        val qtr = when (it.quarter) {
             "Q1" -> Quarter.Q1
             "Q2" -> Quarter.Q2
             "Q3" -> Quarter.Q3
@@ -158,30 +162,30 @@ private fun internalMappingToGroupedQuarterSpecificData(dbData: List<MobileDataU
             quarter = qtr,
             value = it.value.toString()
         )
-        Log.d("TAG","qtrSpecificData:${qtrSpecificData}")
+        Log.d("TAG", "qtrSpecificData:${qtrSpecificData}")
 
-        if(qtrSpecificData.quarter != Quarter.UNKNOWN) {
+        if (qtrSpecificData.quarter != Quarter.UNKNOWN) {
             qtrSpecificList.add(qtrSpecificData)
         }
     }
-    Log.d("TAG","QTRSpecificList:${qtrSpecificList}")
+    Log.d("TAG", "QTRSpecificList:${qtrSpecificList}")
 
-    val groupedList= qtrSpecificList.groupBy {
+    val groupedList = qtrSpecificList.groupBy {
         it.year
     }
-    Log.d("TAG","groupedList:${groupedList}")
+    Log.d("TAG", "groupedList:${groupedList}")
 
     return groupedList
 
 }
 
-private fun internalMappingToGroupedQuarterSpecificData(response:DataUsageResponse): Map<Long, List<QuarterSpecificData>> {
+private fun internalMappingToGroupedQuarterSpecificData(response: DataUsageResponse): Map<Long, List<QuarterSpecificData>> {
 
     val qtrSpecificList = mutableListOf<QuarterSpecificData>()
     response.result?.records?.forEach {
-        Log.d("DEMO","QTR:${it.quarter}")
-        val year = it.quarter.substring(0,4)
-        val qtr= when(it.quarter.substring(5)){
+        Log.d("DEMO", "QTR:${it.quarter}")
+        val year = it.quarter.substring(0, 4)
+        val qtr = when (it.quarter.substring(5)) {
             "Q1" -> Quarter.Q1
             "Q2" -> Quarter.Q2
             "Q3" -> Quarter.Q3
@@ -189,22 +193,22 @@ private fun internalMappingToGroupedQuarterSpecificData(response:DataUsageRespon
             else -> Quarter.UNKNOWN
         }
         val qtrSpecificData = QuarterSpecificData(
-            year = year.toLongOrNull()?:0L,
+            year = year.toLongOrNull() ?: 0L,
             quarter = qtr,
             value = it.volume.toString()
         )
-        Log.d("TAG","qtrSpecificData:${qtrSpecificData}")
+        Log.d("TAG", "qtrSpecificData:${qtrSpecificData}")
 
-        if(qtrSpecificData.quarter != Quarter.UNKNOWN) {
+        if (qtrSpecificData.quarter != Quarter.UNKNOWN) {
             qtrSpecificList.add(qtrSpecificData)
         }
     }
-    Log.d("TAG","QTRSpecificList:${qtrSpecificList}")
+    Log.d("TAG", "QTRSpecificList:${qtrSpecificList}")
 
-    val groupedList= qtrSpecificList.groupBy {
+    val groupedList = qtrSpecificList.groupBy {
         it.year
     }
-    Log.d("TAG","groupedList:${groupedList}")
+    Log.d("TAG", "groupedList:${groupedList}")
 
     return groupedList
 
