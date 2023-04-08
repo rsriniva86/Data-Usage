@@ -2,6 +2,7 @@ package com.demo.datausage
 
 import android.app.Application
 import android.content.Context
+import com.demo.datausage.common.logging.di.logModule
 import com.demo.datausage.consumption.qtr.di.quarterModule
 import com.demo.datausage.consumption.years.di.yearsModule
 import com.demo.datausage.core.data.datasource.local.database.di.dbModule
@@ -23,6 +24,7 @@ class DataUsageApp : Application() {
             modules(
                 listOf(
                     appModule,
+                    logModule,
                     networkModule,
                     dbModule,
                     repoModule,

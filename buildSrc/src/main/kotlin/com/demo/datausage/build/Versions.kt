@@ -7,6 +7,7 @@ object Versions {
     const val kotlin = "1.8.10"
     const val ktx = "1.8.0"
     const val timber = "4.7.1"
+    const val localBroadcast = "1.1.0"
     const val appCompat = "1.4.1"
     const val constraintLayout = "1.1.3"
     const val jUnit = "4.13.2"

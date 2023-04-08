@@ -6,6 +6,7 @@ object Dependencies {
     const val ktx = "androidx.core:core-ktx:${Versions.ktx}"
     const val appCompat = "androidx.appcompat:appcompat:${Versions.appCompat}"
     const val timber = "com.jakewharton.timber:timber:${Versions.timber}"
+    const val localBroadcastManager= "androidx.localbroadcastmanager:localbroadcastmanager:${Versions.localBroadcast}"
     const val kotlin = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${Versions.kotlin}"
     const val materialDesign = "com.google.android.material:material:${Versions.material}"
     const val constraintLayout = "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
