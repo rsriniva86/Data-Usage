@@ -2,7 +2,7 @@ package com.demo.datausage.core.data.datasource.local.database.di
 
 import android.content.Context
 import androidx.room.Room
-import com.demo.datausage.core.data.datasource.local.database.RoomDB
+import com.demo.datausage.core.data.datasource.local.database.DataUsageDB
 import org.koin.dsl.module
 
 
@@ -10,13 +10,18 @@ val dbModule = module {
     single {
         provideAppDatabase(get())
     }
+    single {
+        provideDataUsageDao(get())
+    }
 }
 
+fun provideDataUsageDao(db:DataUsageDB) =
+    db.dataUsageDao()
 
-fun provideAppDatabase(context: Context): RoomDB {
+fun provideAppDatabase(context: Context): DataUsageDB {
     return Room.databaseBuilder(
         context,
-        RoomDB::class.java,
+        DataUsageDB::class.java,
         "DataUsage_DB"
     ).build()
 }

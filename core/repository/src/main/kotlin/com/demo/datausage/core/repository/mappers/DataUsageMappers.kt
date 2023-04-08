@@ -1,6 +1,7 @@
 package com.demo.datausage.core.repository.mappers
 
 import android.util.Log
+import com.demo.datausage.core.data.datasource.local.database.entities.MobileDataUsageDB
 import com.demo.datausage.core.data.datasource.remote.dto.DataUsageResponse
 import com.demo.datausage.domainmodels.Datatype
 import com.demo.datausage.domainmodels.QuarterWiseData
@@ -22,10 +23,18 @@ data class QuarterSpecificData(
 )
 
 object YearWiseDataMapper{
-    fun mapToYearWiseDataList(response:DataUsageResponse):List<YearWiseData> {
 
-        val yearWiseDataList = mutableListOf<YearWiseData>()
+    fun mapToYearWiseDataList(dbData: List<MobileDataUsageDB>): List<YearWiseData> {
+        val groupedList= internalMappingToGroupedQuarterSpecificData(dbData = dbData)
+        return  groupedDataToYearWiseDataList(groupedList)
+    }
+    fun mapToYearWiseDataList(response:DataUsageResponse):List<YearWiseData> {
         val groupedList= internalMappingToGroupedQuarterSpecificData(response = response)
+        return  groupedDataToYearWiseDataList(groupedList)
+    }
+
+    private fun groupedDataToYearWiseDataList(groupedList: Map<Long, List<QuarterSpecificData>>): List<YearWiseData> {
+        val yearWiseDataList = mutableListOf<YearWiseData>()
         groupedList.forEach { (year, data) ->
             var value :BigDecimal = BigDecimal.valueOf(0)
             data.forEach {
@@ -42,8 +51,9 @@ object YearWiseDataMapper{
         }
         Log.d("TAG","$yearWiseDataList")
         return yearWiseDataList
-
     }
+
+
 }
 
 object QuarterWiseDataMapper {
@@ -97,6 +107,40 @@ object QuarterWiseDataMapper {
         }
         return quarterWiseDataList
     }
+}
+
+private fun internalMappingToGroupedQuarterSpecificData(dbData: List<MobileDataUsageDB>): Map<Long, List<QuarterSpecificData>> {
+
+    val qtrSpecificList = mutableListOf<QuarterSpecificData>()
+    dbData.forEach {
+        val year = it.quarter.substring(0,4)
+        val qtr= when(it.quarter.substring(5)){
+            "Q1" -> Quarter.Q1
+            "Q2" -> Quarter.Q2
+            "Q3" -> Quarter.Q3
+            "Q4" -> Quarter.Q4
+            else -> Quarter.UNKNOWN
+        }
+        val qtrSpecificData = QuarterSpecificData(
+            year = year.toLongOrNull()?:0L,
+            quarter = qtr,
+            value = it.value.toString()
+        )
+        Log.d("TAG","qtrSpecificData:${qtrSpecificData}")
+
+        if(qtrSpecificData.quarter != Quarter.UNKNOWN) {
+            qtrSpecificList.add(qtrSpecificData)
+        }
+    }
+    Log.d("TAG","QTRSpecificList:${qtrSpecificList}")
+
+    val groupedList= qtrSpecificList.groupBy {
+        it.year
+    }
+    Log.d("TAG","groupedList:${groupedList}")
+
+    return groupedList
+
 }
 
 private fun internalMappingToGroupedQuarterSpecificData(response:DataUsageResponse): Map<Long, List<QuarterSpecificData>> {
