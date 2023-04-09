@@ -22,7 +22,7 @@ import org.junit.Test
 import org.mockito.Mock
  class DataUsageRepositoryTest {
 
-    private lateinit var repository: DataUsageRepository_Impl
+    private lateinit var repository: DataUsageRepository
 
     @Mock
     private lateinit var dao: DataUsageDao

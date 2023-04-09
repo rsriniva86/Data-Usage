@@ -6,6 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.demo.datausage.core.repository.datausage.DataUsageRepository
 import com.demo.datausage.domainmodels.YearWiseData
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.launch
 import timber.log.Timber
@@ -16,10 +17,11 @@ class YearScreenViewModel(
 
     val list = mutableStateListOf<YearWiseData>()
 
-    fun getYearData() {
-        viewModelScope.launch(Dispatchers.IO) {
+    fun getYearData() : Job {
+     val job= viewModelScope.launch(Dispatchers.IO) {
             getData()
         }
+        return job
     }
 
     private suspend fun getData() {
