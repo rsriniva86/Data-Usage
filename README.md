@@ -73,4 +73,6 @@ Sample Test result below:
 ### app 
 UI compose Tests written inside``src/androidTest/kotlin`` within ``app`` module.<br>
 Sample Test result below:
+![ComposeUITestResults](./screenshots/ComposeUITestResults.png)
+
 
