@@ -25,6 +25,10 @@ internal val mokitoAndroidTestDependencies = listOf(
     Dependencies.mokitoAndroid
 )
 
+internal val mockWebServerAndroidTestDependencies = listOf(
+    Dependencies.mockWebServer
+)
+
 internal val androidTestDependencies = listOf(
     Dependencies.extJunit,
     Dependencies.espresso

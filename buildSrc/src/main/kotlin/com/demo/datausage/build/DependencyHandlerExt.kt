@@ -28,11 +28,18 @@ fun DependencyHandler.addAndroidTestDependencies() {
     }
     addMokitoAndroidTest()
 }
-fun DependencyHandler.addMokitoAndroidTest(){
+private fun DependencyHandler.addMokitoAndroidTest(){
     mokitoAndroidTestDependencies.forEach{
         add("androidTestImplementation", it)
     }
 }
+
+fun DependencyHandler.addMockWebServerAndroidTestDependencies(){
+    mockWebServerAndroidTestDependencies.forEach{
+        add("androidTestImplementation", it)
+    }
+}
+
 
 fun DependencyHandler.addComposeOfficialDependencies() {
     composeOfficialDependencies.forEach {

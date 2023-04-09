@@ -1,5 +1,7 @@
 import com.demo.datausage.build.addAndroidDependencies
+import com.demo.datausage.build.addAndroidTestDependencies
 import com.demo.datausage.build.addDependencyInjectionDependencies
+import com.demo.datausage.build.addMockWebServerAndroidTestDependencies
 import com.demo.datausage.build.addRetrofitDependencies
 
 plugins {
@@ -14,4 +16,6 @@ dependencies {
     addAndroidDependencies()
     addRetrofitDependencies()
     addDependencyInjectionDependencies()
+    addAndroidTestDependencies()
+    addMockWebServerAndroidTestDependencies()
 }

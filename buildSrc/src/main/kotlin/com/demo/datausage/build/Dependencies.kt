@@ -40,6 +40,7 @@ object Dependencies {
     const val retrofitGSON = "com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
     const val retrofitLogInterceptor =
         "com.squareup.okhttp3:logging-interceptor:${Versions.retrofitLogIntercepter}"
+    const val mockWebServer = "com.squareup.okhttp3:mockwebserver:${Versions.mockWebServer}"
     const val koin = "io.insert-koin:koin-core:${Versions.koin}"
     const val koinAndroid = "io.insert-koin:koin-android:${Versions.koinAndroid}"
     const val koinAndroidXCompose =

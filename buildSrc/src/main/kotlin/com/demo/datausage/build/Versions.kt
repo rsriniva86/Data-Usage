@@ -28,6 +28,7 @@ object Versions {
     const val material3 = "1.0.1"
     const val retrofit = "2.9.0"
     const val retrofitLogIntercepter = "4.10.0"
+    const val mockWebServer = "4.9.3"
     const val koin = "3.4.0"
     const val koinAndroid = koin
     const val koinAndroidXCompose = koin
