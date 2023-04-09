@@ -1,7 +1,7 @@
 package com.demo.datausage.core.data.datasource.remote
 
 import android.util.Log
-import com.demo.datausage.core.data.datasource.remote.SampleData.sampleDataUsageResponse
+import com.demo.datausage.core.data.datasource.remote.SampleData
 import com.demo.datausage.core.data.datasource.remote.dto.DataUsageResponse
 import com.google.gson.Gson
 import junit.framework.TestCase.assertEquals
@@ -19,7 +19,6 @@ class DataUsageAPITest {
 
     private lateinit var mockWebServer: MockWebServer
     private lateinit var apiService : DataUsageAPI
-    private val resource_id = "a807b7ab-6cad-4aa6-87d0-e283a7353a0f"
 
     @Before
     fun setUp() {
@@ -45,14 +44,14 @@ class DataUsageAPITest {
         runBlocking {
 
             val response =
-                MockResponse().setResponseCode(HttpURLConnection.HTTP_OK).setBody(sampleDataUsageResponse)
+                MockResponse().setResponseCode(HttpURLConnection.HTTP_OK).setBody(SampleData.sampleDataUsageResponse)
             mockWebServer.enqueue(response)
-            val expectedResponse = Gson().fromJson(sampleDataUsageResponse, DataUsageResponse::class.java)
+            val expectedResponse = Gson().fromJson(SampleData.sampleDataUsageResponse, DataUsageResponse::class.java)
 
-            val result = apiService.getDataUsage(resource_id)
+            val result = apiService.getDataUsage(SampleData.resource_id)
             val actualRequest = mockWebServer.takeRequest()
-           
-            assert(actualRequest.path == "/action/datastore_search?resource_id=a807b7ab-6cad-4aa6-87d0-e283a7353a0f")
+
+            assert(actualRequest.path == SampleData.expectedPath)
             assertEquals(expectedResponse,result)
         }
 
