@@ -32,7 +32,7 @@ It is possible to scroll left/right between different years
 
 - For the fresh application, data is needed from the server 
 - Once data is fetched from server, the necessary data is stored in Local DB
-- So, subsequently, data is first shown from existing DB and will show data even if there is no internt.
+- So, subsequently, data is first shown from existing DB and will show data even if there is no internet.
 - But if internet is there, data from server will replace the existing DB data so that cache is as latest as possible
 
 ## Event Logging Mechanism
