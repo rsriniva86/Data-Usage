@@ -20,8 +20,7 @@ import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
 import org.mockito.Mock
-
-internal class DataUsageRepositoryTest {
+ class DataUsageRepositoryTest {
 
     private lateinit var repository: DataUsageRepository_Impl
 
