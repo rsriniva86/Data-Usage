@@ -17,7 +17,8 @@ internal val kotlinCoroutineDependencies = listOf(
 )
 
 internal val junitTestDependencies = listOf(
-    Dependencies.junit
+    Dependencies.junit,
+    Dependencies.kotlinCoroutineTest
 )
 
 internal val androidTestDependencies = listOf(

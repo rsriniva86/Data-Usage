@@ -16,7 +16,7 @@ fun DependencyHandler.addAndroidUIDependencies() {
 
 fun DependencyHandler.addJUnitTestDependencies() {
     junitTestDependencies.forEach {
-        add("implementation", it)
+        add("testImplementation", it)
     }
 }
 
