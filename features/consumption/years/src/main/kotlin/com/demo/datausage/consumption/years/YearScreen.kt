@@ -17,8 +17,8 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -26,6 +26,7 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.demo.datausage.domainmodels.DataUsageScreens
 import com.demo.datausage.domainmodels.YearWiseData
+import com.demo.datausage.features.consumption.years.R
 import org.koin.androidx.compose.getViewModel
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
@@ -35,6 +36,7 @@ fun YearScreen(
     navController: NavController, yearScreenViewModel: YearScreenViewModel
 ) {
     val data = yearScreenViewModel.list.toList()
+    val context = LocalContext.current
     LaunchedEffect(Unit) {
         yearScreenViewModel.getYearData()
     }
@@ -43,14 +45,16 @@ fun YearScreen(
         TopAppBar(title = {
             Row(
                 horizontalArrangement = Arrangement.Start,
-                modifier = Modifier.padding(start = 8.dp)
+                modifier = Modifier
+                    .padding(start = 8.dp)
             ) {
                 Text(
-                    modifier = Modifier.fillMaxWidth(),
+                    modifier = Modifier
+                        .fillMaxWidth(),
                     textAlign = TextAlign.Center,
-                    text = "Year Screen",
+                    text = context.getString(R.string.year_screen_title),
                     style = MaterialTheme.typography.headlineLarge
-                    )
+                )
             }
         })
     }) {
@@ -78,13 +82,14 @@ fun YearScreen(
 private fun YearItem(
     dataItem: YearWiseData, navController: NavController
 ) {
+    val context = LocalContext.current
     Card(
         modifier = Modifier
             .padding(all = 8.dp)
             .fillMaxWidth(),
         onClick = {
-        navController.navigate(DataUsageScreens.QtrScreen.route + "/${dataItem.year}")
-    }) {
+            navController.navigate(DataUsageScreens.QtrScreen.route + "/${dataItem.year}")
+        }) {
         Column(
             modifier =
             Modifier
@@ -92,39 +97,21 @@ private fun YearItem(
                 .fillMaxWidth()
                 .padding(all = 8.dp)
         ) {
-            Row (
-                verticalAlignment = Alignment.CenterVertically
-            ){
-                Text(
-                    text = "Year : ",
-                    color = MaterialTheme.colorScheme.onPrimary,
-                    style = MaterialTheme.typography.titleLarge,
-                    textAlign = TextAlign.Center
 
-                )
-                Text(
-                    text = "${dataItem.year}",
-                    color = MaterialTheme.colorScheme.onPrimary,
-                    style = MaterialTheme.typography.bodyLarge,
-                    textAlign = TextAlign.Center
-                )
-            }
-            Row (
-                verticalAlignment = Alignment.CenterVertically
-            ){
-                Text(
-                    text = "Usage : ",
-                    color = MaterialTheme.colorScheme.onPrimary,
-                    style = MaterialTheme.typography.titleLarge,
-                    textAlign = TextAlign.Center
-                )
-                Text(
-                    text = "${dataItem.value}",
-                    color = MaterialTheme.colorScheme.onPrimary,
-                    style = MaterialTheme.typography.bodyLarge,
-                    textAlign = TextAlign.Center
-                )
-            }
+            Text(
+                text = "${context.getString(R.string.year_label)} ${dataItem.year}",
+                color = MaterialTheme.colorScheme.onPrimary,
+                style = MaterialTheme.typography.bodyLarge,
+                textAlign = TextAlign.Center
+            )
+
+            Text(
+                text = "${context.getString(R.string.usage_label)} ${dataItem.value}",
+                color = MaterialTheme.colorScheme.onPrimary,
+                style = MaterialTheme.typography.bodyLarge,
+                textAlign = TextAlign.Center
+            )
+
         }
     }
 
@@ -136,6 +123,7 @@ private fun YearItem(
 private fun PreviewYearScreen() {
     val navController = rememberNavController()
     YearScreen(
-        navController = navController, yearScreenViewModel = getViewModel<YearScreenViewModel>()
+        navController = navController,
+        yearScreenViewModel = getViewModel<YearScreenViewModel>()
     )
 }
