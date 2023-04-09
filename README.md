@@ -23,7 +23,7 @@ A Screen showing the total amount of data usage for each year.
 
 ### Year Details Screen (Quarter Screen)
 
-A scree showing the amount of data usage for each quarter for a selected year.
+A screen showing the amount of data usage for each quarter for a selected year.
 It is possible to scroll left/right between different years
 
 ![YearDetailScreen](./screenshots/YearDetailsScreen_1.png)
@@ -36,6 +36,13 @@ When a specific year's details is shown in UI. It is tracked in event logging. T
 ## Unit Testing (Instrumented Tests)
 
 ### features/consumption/years
+
+Tests written inside``src/androidTest/kotlin`` with ``features/consumption/years`` module
+Sample Test result below:
+![YearScreenViewModelTestResults](./screenshots/YearScreenViewModelTestResults.png)
+
+
+
 ### features/consumption/qtr
 ### core/repository
 ### core/data/datasource/local
