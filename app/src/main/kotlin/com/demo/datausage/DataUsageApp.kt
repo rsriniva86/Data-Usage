@@ -12,13 +12,13 @@ import com.demo.datausage.core.repository.di.repoModule
 import com.demo.datausage.di.appModule
 import org.koin.android.ext.android.inject
 import org.koin.android.ext.koin.androidContext
-import org.koin.core.context.GlobalContext
 import org.koin.core.context.startKoin
 import timber.log.Timber
 
 class DataUsageApp : Application() {
 
-    private val eventlog : EventLogReceiver by inject()
+    private val eventlog: EventLogReceiver by inject()
+
     init {
         instance = requireNotNull(this)
     }

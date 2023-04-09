@@ -1,7 +1,6 @@
 package com.demo.datausage.consumption.qtr.di
 
 import com.demo.datausage.consumption.qtr.QtrScreenViewModel
-import org.koin.androidx.compose.get
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 

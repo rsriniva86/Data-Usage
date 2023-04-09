@@ -80,7 +80,6 @@ private val LightBlueColorPalette = lightColorScheme(
 )
 
 
-
 @Composable
 fun DataUsageMaterial3Theme(
     darkTheme: Boolean = isSystemInDarkTheme(),

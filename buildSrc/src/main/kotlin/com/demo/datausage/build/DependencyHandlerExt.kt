@@ -49,17 +49,18 @@ fun DependencyHandler.addDependencyInjectionDependencies() {
         add("implementation", it)
     }
 }
-fun DependencyHandler.addKotlinCoroutineDependencies(){
+
+fun DependencyHandler.addKotlinCoroutineDependencies() {
     kotlinCoroutineDependencies.forEach {
         add("implementation", it)
     }
 }
 
-fun DependencyHandler.addDBDependencies(){
+fun DependencyHandler.addDBDependencies() {
     dbDependencies.forEach {
-        if(it == Dependencies.roomCompiler){
-            add("kapt",it)
-        }else {
+        if (it == Dependencies.roomCompiler) {
+            add("kapt", it)
+        } else {
             add("implementation", it)
         }
 

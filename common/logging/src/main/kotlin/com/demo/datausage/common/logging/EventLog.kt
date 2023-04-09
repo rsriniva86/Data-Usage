@@ -1,4 +1,3 @@
-
 package com.demo.datausage.common.logging
 
 import android.content.BroadcastReceiver
@@ -8,28 +7,31 @@ import android.content.IntentFilter
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import timber.log.Timber
 
-private const val EVENT_LOG_INTENT_ACTION="EventLogIntentAction"
+private const val EVENT_LOG_INTENT_ACTION = "EventLogIntentAction"
 private const val EVENT_LOG_EXTRA_MESSAGE = "EventLogMessage"
-interface EventLogReceiver{
+
+interface EventLogReceiver {
     fun register()
     fun unregister()
 
 }
+
 @Suppress("DEPRECATION")
 class EventLogReceiver_Impl(
     val context: Context
-):EventLogReceiver{
+) : EventLogReceiver {
 
     private val broadcast = object : BroadcastReceiver() {
         override fun onReceive(context: Context?, intent: Intent?) {
             intent?.also {
-                val message=it.getStringExtra(EVENT_LOG_EXTRA_MESSAGE)
-                message?.let{ logMessage->
+                val message = it.getStringExtra(EVENT_LOG_EXTRA_MESSAGE)
+                message?.let { logMessage ->
                     Timber.d("Event:$logMessage")
                 }
             }
         }
     }
+
     override fun register() {
         LocalBroadcastManager.getInstance(context).registerReceiver(
             broadcast,
@@ -44,10 +46,10 @@ class EventLogReceiver_Impl(
 }
 
 object EventLogMessenger {
-    fun sendMessage(context: Context,message: String){
+    fun sendMessage(context: Context, message: String) {
         val intent = Intent(EVENT_LOG_INTENT_ACTION)
         intent.also {
-            it.putExtra(EVENT_LOG_EXTRA_MESSAGE,message)
+            it.putExtra(EVENT_LOG_EXTRA_MESSAGE, message)
         }
         LocalBroadcastManager.getInstance(context).sendBroadcast(intent)
     }

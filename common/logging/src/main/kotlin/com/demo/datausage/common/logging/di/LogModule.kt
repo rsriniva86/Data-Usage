@@ -5,7 +5,7 @@ import com.demo.datausage.common.logging.EventLogReceiver_Impl
 import org.koin.dsl.module
 
 val logModule = module {
-    single<EventLogReceiver>{
+    single<EventLogReceiver> {
         EventLogReceiver_Impl(get())
     }
 }

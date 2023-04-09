@@ -40,7 +40,6 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.demo.datausage.common.logging.EventLogMessenger
-import com.demo.datausage.domainmodels.Datatype
 import com.demo.datausage.domainmodels.QuarterWiseData
 import com.demo.datausage.features.consumption.qtr.R
 import kotlinx.coroutines.launch
@@ -49,6 +48,7 @@ import org.koin.androidx.compose.getViewModel
 
 private const val MESSAGE_STARTED = "Year Detail Screen (Quarter wise) started"
 private const val MESSAGE_SHOWING_YEAR = "Year Detail Screen (Quarter wise) showing for year:"
+
 @OptIn(ExperimentalMaterial3Api::class)
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
@@ -84,7 +84,8 @@ fun QtrScreen(
                             listState.firstVisibleItemIndex
                         )
                         EventLogMessenger.sendMessage(
-                            context, "${MESSAGE_SHOWING_YEAR} ${qtrScreenViewModel.currentYear.value}"
+                            context,
+                            "${MESSAGE_SHOWING_YEAR} ${qtrScreenViewModel.currentYear.value}"
                         )
                     }
                 }
@@ -162,25 +163,25 @@ private fun QuarterWiseItem(
             )
         }
         Spacer(modifier = Modifier.height(96.dp))
-        if(dataItem.qOneValue.isNotEmpty()){
+        if (dataItem.qOneValue.isNotEmpty()) {
             QuarterCard(
                 label = context.getString(R.string.q1_label),
                 data = dataItem.qOneValue
             )
         }
-        if(dataItem.qTwoValue.isNotEmpty()) {
+        if (dataItem.qTwoValue.isNotEmpty()) {
             QuarterCard(
                 label = context.getString(R.string.q2_label),
                 data = dataItem.qTwoValue
             )
         }
-        if(dataItem.qThreeValue.isNotEmpty()) {
+        if (dataItem.qThreeValue.isNotEmpty()) {
             QuarterCard(
                 label = context.getString(R.string.q3_label),
                 data = dataItem.qThreeValue
             )
         }
-        if(dataItem.qFourValue.isNotEmpty()){
+        if (dataItem.qFourValue.isNotEmpty()) {
             QuarterCard(
                 label = context.getString(R.string.q4_label),
                 data = dataItem.qFourValue
