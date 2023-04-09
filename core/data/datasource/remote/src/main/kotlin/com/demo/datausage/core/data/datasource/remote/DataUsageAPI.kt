@@ -6,7 +6,9 @@ import retrofit2.http.Query
 
 interface DataUsageAPI {
     @GET("action/datastore_search")
-    suspend fun getDataUsage(@Query("resource_id")
-                                 resource_id:String):DataUsageResponse
+    suspend fun getDataUsage(
+        @Query("resource_id")
+        resource_id: String
+    ): DataUsageResponse
 
 }

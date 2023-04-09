@@ -9,7 +9,7 @@ import com.demo.datausage.core.data.datasource.local.database.entities.MobileDat
 @Database(
     entities = [
         MobileDataUsageDB::class
-         ],
+    ],
     version = 1,
     exportSchema = false
 )

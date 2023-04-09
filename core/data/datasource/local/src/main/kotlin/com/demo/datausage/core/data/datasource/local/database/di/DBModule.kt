@@ -8,15 +8,15 @@ import org.koin.dsl.module
 
 
 val dbModule = module {
-    single <RoomDB>{
+    single<RoomDB> {
         provideAppDatabase(get())
     }
-    single <DataUsageDao>{
+    single<DataUsageDao> {
         provideDataUsageDao(get())
     }
 }
 
-fun provideDataUsageDao(db:RoomDB) =
+fun provideDataUsageDao(db: RoomDB) =
     db.dataUsageDao()
 
 fun provideAppDatabase(context: Context): RoomDB {

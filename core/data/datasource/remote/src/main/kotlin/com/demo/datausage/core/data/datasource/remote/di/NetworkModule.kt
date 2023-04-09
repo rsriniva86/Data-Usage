@@ -12,7 +12,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 val networkModule = module {
     single { provideOkHttpClient() }
     single { provideRetrofitBuilder(get(), "https://data.gov.sg/api/") }
-    single { provideDataUsageAPI(get())}
+    single { provideDataUsageAPI(get()) }
 }
 
 private fun provideOkHttpClient() = if (BuildConfig.DEBUG) {
@@ -35,7 +35,7 @@ private fun provideRetrofitBuilder(
         .client(okHttpClient)
 
 private fun provideDataUsageAPI(
-    retrofitBuilder:Retrofit.Builder
-) =  retrofitBuilder
+    retrofitBuilder: Retrofit.Builder
+) = retrofitBuilder
     .build()
     .create(DataUsageAPI::class.java)

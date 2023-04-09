@@ -102,15 +102,19 @@ object QuarterWiseDataMapper {
                     Quarter.Q1 -> {
                         q1Value = it.value
                     }
+
                     Quarter.Q2 -> {
                         q2Value = it.value
                     }
+
                     Quarter.Q3 -> {
                         q3Value = it.value
                     }
+
                     Quarter.Q4 -> {
                         q4Value = it.value
                     }
+
                     Quarter.UNKNOWN -> {}
                 }
 

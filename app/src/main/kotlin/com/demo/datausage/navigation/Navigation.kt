@@ -16,10 +16,12 @@ import org.koin.androidx.compose.getViewModel
 @Composable
 fun Navigation() {
     val navController = rememberNavController()
-    NavHost(navController = navController,
-        startDestination = DataUsageScreens.YearScreen.route) {
+    NavHost(
+        navController = navController,
+        startDestination = DataUsageScreens.YearScreen.route
+    ) {
         composable(route = DataUsageScreens.YearScreen.route) {
-            val yearScreenViewModel  = getViewModel<YearScreenViewModel>()
+            val yearScreenViewModel = getViewModel<YearScreenViewModel>()
             YearScreen(
                 navController = navController,
                 yearScreenViewModel = yearScreenViewModel
@@ -31,11 +33,11 @@ fun Navigation() {
                 type = NavType.LongType
             })
         ) { entry ->
-            val qtrScreenViewModel  = getViewModel<QtrScreenViewModel>()
+            val qtrScreenViewModel = getViewModel<QtrScreenViewModel>()
 
             QtrScreen(
-                navController=navController,
-                year = entry.arguments?.getLong("year")?:2004,
+                navController = navController,
+                year = entry.arguments?.getLong("year") ?: 2004,
                 qtrScreenViewModel = qtrScreenViewModel
             )
         }

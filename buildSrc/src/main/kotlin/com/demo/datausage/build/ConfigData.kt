@@ -12,6 +12,6 @@ object ConfigData {
     const val targetSdkVersion = 33
 
     const val kotlinCompilerExtensionVersion = Versions.composeCompiler
-    const val  testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+    const val testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
 }

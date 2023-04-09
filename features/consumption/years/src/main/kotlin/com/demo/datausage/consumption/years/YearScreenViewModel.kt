@@ -8,23 +8,23 @@ import com.demo.datausage.domainmodels.YearWiseData
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class YearScreenViewModel (
+class YearScreenViewModel(
     private val repository: DataUsageRepository
-    ): ViewModel() {
+) : ViewModel() {
 
-     val list = mutableStateListOf<YearWiseData>()
+    val list = mutableStateListOf<YearWiseData>()
 
-    fun getYearData(){
-        viewModelScope.launch(Dispatchers.IO){
+    fun getYearData() {
+        viewModelScope.launch(Dispatchers.IO) {
             getData()
         }
     }
 
-    private suspend fun getData(){
+    private suspend fun getData() {
 
         repository
             .getYearWiseData()
-            .collect{
+            .collect {
                 list.clear()
                 list.addAll(it)
             }

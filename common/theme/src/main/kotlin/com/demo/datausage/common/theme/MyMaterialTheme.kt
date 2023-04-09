@@ -23,7 +23,6 @@ private val DarkGreenColorPalette = darkColors(
 )
 
 
-
 private val DarkBlueColorPalette = darkColors(
     primary = blue200,
     primaryVariant = blue700,
@@ -36,7 +35,6 @@ private val DarkBlueColorPalette = darkColors(
     onSurface = Color.White,
     error = Color.Red,
 )
-
 
 
 // Light pallets
@@ -66,7 +64,7 @@ private val LightBlueColorPalette = lightColors(
 
 
 enum class ColorPallete {
-     GREEN, BLUE
+    GREEN, BLUE
 }
 
 @Composable
