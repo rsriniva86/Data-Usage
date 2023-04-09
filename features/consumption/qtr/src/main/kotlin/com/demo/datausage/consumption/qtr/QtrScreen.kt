@@ -42,9 +42,13 @@ import androidx.navigation.compose.rememberNavController
 import com.demo.datausage.common.logging.EventLogMessenger
 import com.demo.datausage.domainmodels.Datatype
 import com.demo.datausage.domainmodels.QuarterWiseData
+import com.demo.datausage.features.consumption.qtr.R
 import kotlinx.coroutines.launch
 import org.koin.androidx.compose.getViewModel
 
+
+private const val MESSAGE_STARTED = "Year Detail Screen (Quarter wise) started"
+private const val MESSAGE_SHOWING_YEAR = "Year Detail Screen (Quarter wise) showing for year:"
 @OptIn(ExperimentalMaterial3Api::class)
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
@@ -58,15 +62,14 @@ fun QtrScreen(
     val listState = rememberLazyListState()
     val coroutineScope = rememberCoroutineScope()
     LaunchedEffect(Unit) {
-        EventLogMessenger.sendMessage(context, "Year Detail Screen (Quarter wise) started")
+        EventLogMessenger.sendMessage(context, MESSAGE_STARTED)
         qtrScreenViewModel.currentYear.value = year
         qtrScreenViewModel.getQuarterData()
     }
     LaunchedEffect(qtrScreenViewModel.index.value) {
         if (listState.firstVisibleItemIndex != qtrScreenViewModel.index.value) {
             EventLogMessenger.sendMessage(
-                context, "Year Detail Screen (Quarter wise) " +
-                        "showing for year:${qtrScreenViewModel.currentYear.value}"
+                context, "${MESSAGE_SHOWING_YEAR} ${qtrScreenViewModel.currentYear.value}"
             )
             listState.scrollToItem(index = qtrScreenViewModel.index.value)
         }
@@ -81,8 +84,7 @@ fun QtrScreen(
                             listState.firstVisibleItemIndex
                         )
                         EventLogMessenger.sendMessage(
-                            context, "Year Detail Screen (Quarter wise) " +
-                                    "showing for year:${qtrScreenViewModel.currentYear.value}"
+                            context, "${MESSAGE_SHOWING_YEAR} ${qtrScreenViewModel.currentYear.value}"
                         )
                     }
                 }
@@ -101,7 +103,7 @@ fun QtrScreen(
                 ) {
                     Icon(
                         imageVector = Icons.Default.ArrowBack,
-                        contentDescription = "Arrow Back",
+                        contentDescription = context.getString(R.string.back_icon_content_description),
                         modifier = Modifier.clickable {
                             navController.popBackStack()
                         })
@@ -110,7 +112,7 @@ fun QtrScreen(
                         modifier = Modifier
                             .fillMaxWidth(),
                         textAlign = TextAlign.Center,
-                        text = "Year Details Screen",
+                        text = context.getString(R.string.qtr_screen_title),
                         style = MaterialTheme.typography.headlineLarge
                     )
                 }
@@ -147,6 +149,7 @@ private fun QuarterWiseItem(
     dataItem: QuarterWiseData,
     modifier: Modifier
 ) {
+    val context = LocalContext.current
     Column(modifier = modifier) {
         Row {
             Text(
@@ -161,25 +164,25 @@ private fun QuarterWiseItem(
         Spacer(modifier = Modifier.height(96.dp))
         if(dataItem.qOneValue.isNotEmpty()){
             QuarterCard(
-                label = "Q1",
+                label = context.getString(R.string.q1_label),
                 data = dataItem.qOneValue
             )
         }
         if(dataItem.qTwoValue.isNotEmpty()) {
             QuarterCard(
-                label = "Q2",
+                label = context.getString(R.string.q2_label),
                 data = dataItem.qTwoValue
             )
         }
         if(dataItem.qThreeValue.isNotEmpty()) {
             QuarterCard(
-                label = "Q3",
+                label = context.getString(R.string.q3_label),
                 data = dataItem.qThreeValue
             )
         }
         if(dataItem.qFourValue.isNotEmpty()){
             QuarterCard(
-                label = "Q4",
+                label = context.getString(R.string.q4_label),
                 data = dataItem.qFourValue
             )
         }

@@ -1,0 +1,8 @@
+<resources>
+    <string name="qtr_screen_title">Year Details Screen</string>
+    <string name="q1_label">Q1 : </string>
+    <string name="q2_label">Q2 : </string>
+    <string name="q3_label">Q3 : </string>
+    <string name="q4_label">Q4 : </string>
+    <string name="back_icon_content_description">Arrow Back</string>
+</resources>
