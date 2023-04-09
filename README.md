@@ -38,23 +38,34 @@ This is illustrated in below logs
 
 ### features/consumption/years
 
-Tests written inside``src/androidTest/kotlin`` within ``features/consumption/years`` module.<br>
+Tests written inside``src/androidTest/kotlin`` within ``:features:consumption:years`` module.<br>
 Sample Test result below:
 ![YearScreenViewModelTestResults](./screenshots/YearScreenViewModelTestResults.png)
 
-
 ### features/consumption/qtr
 
-Tests written inside``src/androidTest/kotlin`` within ``features/consumption/qtr`` module.<br>
+Tests written inside``src/androidTest/kotlin`` within ``:features:consumption:qtr`` module.<br>
 Sample Test result below:
 ![QtrScreenViewModelTestResults](./screenshots/QtrScreenViewModelTestResults.png)
 
-
 ### core/repository
+
+Tests written inside``src/androidTest/kotlin`` within ``:core:repository`` module.<br>
+Sample Test result below:
+
 ### core/data/datasource/local
+
+Tests written inside``src/androidTest/kotlin`` within ``:core:data:datasource:local`` module.<br>
+Sample Test result below:
+
 ### core/data/datasource/remote
+
+Tests written inside``src/androidTest/kotlin`` within ``:core:data:datasource:remote`` module.<br>
+Sample Test result below:
 
 ## Compose UI testing (Emulator Tests)
 
 ### app 
+UI compose Tests written inside``src/androidTest/kotlin`` within ``app`` module.<br>
+Sample Test result below:
 
