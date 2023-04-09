@@ -17,17 +17,22 @@ to display mobile data usage across years and quarters.
 ## Screens
 ### Year Screen
 
+A Screen showing the total amount of data usage for each year
+![YearScreen1](./screenshots/YearScreen_1.png)
+
 ### Year Details Screen
 
 ## Event Logging Mechanism
 
-## Unit Testing
+## Unit Testing (Instrumented Tests)
+
 ### features/consumption/years
 ### features/consumption/qtr
 ### core/repository
 ### core/data/datasource/local
 ### core/data/datasource/remote
 
-## UI(Compose) testing
+## Compose UI testing (Emulator Tests)
+
 ### app 
 
