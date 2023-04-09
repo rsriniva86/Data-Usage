@@ -8,6 +8,7 @@ import com.demo.datausage.common.logging.EventLogMessenger
 import com.demo.datausage.core.repository.datausage.DataUsageRepository
 import com.demo.datausage.domainmodels.QuarterWiseData
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.launch
 import timber.log.Timber
@@ -30,8 +31,8 @@ class QtrScreenViewModel(
         }
     }
 
-    fun getQuarterData() {
-        viewModelScope.launch(Dispatchers.IO) {
+    fun getQuarterData():Job {
+       return viewModelScope.launch(Dispatchers.IO) {
             getData()
         }
     }
