@@ -46,7 +46,6 @@ import kotlinx.coroutines.launch
 import org.koin.androidx.compose.getViewModel
 
 
-private const val MESSAGE_STARTED = "Year Detail Screen (Quarter wise) started"
 private const val MESSAGE_SHOWING_YEAR = "Year Detail Screen (Quarter wise) showing for year:"
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -61,8 +60,8 @@ fun QtrScreen(
     val context = LocalContext.current
     val listState = rememberLazyListState()
     val coroutineScope = rememberCoroutineScope()
+
     LaunchedEffect(Unit) {
-        EventLogMessenger.sendMessage(context, MESSAGE_STARTED)
         qtrScreenViewModel.currentYear.value = year
         qtrScreenViewModel.getQuarterData()
     }

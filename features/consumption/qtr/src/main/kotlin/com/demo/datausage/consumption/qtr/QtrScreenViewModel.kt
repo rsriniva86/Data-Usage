@@ -4,6 +4,7 @@ import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.demo.datausage.common.logging.EventLogMessenger
 import com.demo.datausage.core.repository.datausage.DataUsageRepository
 import com.demo.datausage.domainmodels.QuarterWiseData
 import kotlinx.coroutines.Dispatchers
@@ -14,6 +15,7 @@ import timber.log.Timber
 class QtrScreenViewModel(
     private val repository: DataUsageRepository
 ) : ViewModel() {
+    
     val list = mutableStateListOf<QuarterWiseData>()
     val index = mutableStateOf(0)
     val currentYear = mutableStateOf(2004L)
