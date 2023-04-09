@@ -1,6 +1,5 @@
 package com.demo.datausage.core.data.datasource.remote
 
-import android.util.Log
 import com.demo.datausage.core.data.datasource.remote.SampleData
 import com.demo.datausage.core.data.datasource.remote.dto.DataUsageResponse
 import com.google.gson.Gson
