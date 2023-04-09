@@ -53,6 +53,17 @@ fun DependencyHandler.addComposeThirdPartyDependencies() {
     }
 }
 
+fun DependencyHandler.addComposeUITestDependencies() {
+    composeUITestDependencies.forEach {
+        if (it == Dependencies.composeUiTestManifest) {
+            add("debugImplementation", it)
+        } else {
+            add("androidTestImplementation", it)
+        }
+
+    }
+}
+
 fun DependencyHandler.addRetrofitDependencies() {
     retrofitDependencies.forEach {
         add("implementation", it)
@@ -81,3 +92,6 @@ fun DependencyHandler.addDBDependencies() {
 
     }
 }
+
+
+

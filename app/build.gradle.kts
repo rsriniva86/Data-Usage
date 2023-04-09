@@ -61,8 +61,5 @@ dependencies {
     addKotlinCoroutineDependencies()
     addDependencyInjectionDependencies()
     addDBDependencies()
-    androidTestImplementation("androidx.compose.ui:ui-test-junit4:${Versions.compose}")
-    androidTestImplementation("androidx.compose.ui:ui-test:${Versions.compose}")
-    debugImplementation("androidx.compose.ui:ui-test-manifest:${Versions.compose}")
-
+    addComposeUITestDependencies()
 }

@@ -52,6 +52,12 @@ internal val composeThirdPartyDependencies = listOf(
     Dependencies.composeLottie,
 )
 
+internal val composeUITestDependencies = listOf(
+    Dependencies.composeUiTest,
+    Dependencies.composeUiTestManifest,
+    Dependencies.composeUiTestJunit4
+)
+
 internal val retrofitDependencies = listOf(
     Dependencies.retrofit,
     Dependencies.retrofitGSON,
@@ -69,4 +75,6 @@ internal val dbDependencies = listOf(
     Dependencies.roomKtx,
     Dependencies.roomCompiler
 )
+
+
 
