@@ -7,7 +7,9 @@ import androidx.lifecycle.viewModelScope
 import com.demo.datausage.core.repository.datausage.DataUsageRepository
 import com.demo.datausage.domainmodels.QuarterWiseData
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.launch
+import timber.log.Timber
 
 class QtrScreenViewModel(
     private val repository: DataUsageRepository
@@ -36,6 +38,9 @@ class QtrScreenViewModel(
 
         repository
             .getQtrWiseData()
+            .catch {
+                Timber.e("Exception happened:${it.message}")
+            }
             .collect {
                 list.clear()
                 list.addAll(it)

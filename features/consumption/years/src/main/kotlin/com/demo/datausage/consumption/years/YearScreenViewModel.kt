@@ -6,7 +6,9 @@ import androidx.lifecycle.viewModelScope
 import com.demo.datausage.core.repository.datausage.DataUsageRepository
 import com.demo.datausage.domainmodels.YearWiseData
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.launch
+import timber.log.Timber
 
 class YearScreenViewModel(
     private val repository: DataUsageRepository
@@ -24,6 +26,9 @@ class YearScreenViewModel(
 
         repository
             .getYearWiseData()
+            .catch {
+                Timber.e("Exception happened:${it.message}")
+            }
             .collect {
                 list.clear()
                 list.addAll(it)
