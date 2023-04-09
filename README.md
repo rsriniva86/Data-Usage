@@ -52,16 +52,21 @@ Sample Test result below:
 
 Tests written inside``src/androidTest/kotlin`` within ``:core:repository`` module.<br>
 Sample Test result below:
+![RepositoryTestResults](./screenshots/RepositoryTestResults.png)
 
 ### core/data/datasource/local
 
 Tests written inside``src/androidTest/kotlin`` within ``:core:data:datasource:local`` module.<br>
 Sample Test result below:
+![LocalDataSourceTestResults](./screenshots/LocalDataSourceTestResults.png)
+
 
 ### core/data/datasource/remote
 
 Tests written inside``src/androidTest/kotlin`` within ``:core:data:datasource:remote`` module.<br>
 Sample Test result below:
+![RemoteDataSourceTestResults](./screenshots/RemoteDataSourceTestResults.png)
+
 
 ## Compose UI testing (Emulator Tests)
 
