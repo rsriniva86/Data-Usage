@@ -17,10 +17,16 @@ to display mobile data usage across years and quarters.
 ## Screens
 ### Year Screen
 
-A Screen showing the total amount of data usage for each year
-![YearScreen1](./screenshots/YearScreen_1.png)
+A Screen showing the total amount of data usage for each year.
 
-### Year Details Screen
+![YearScreen](./screenshots/YearScreen_1.png)
+
+### Year Details Screen (Quarter Screen)
+
+A scree showing the amount of data usage for each quarter for a selected year.
+It is possible to scroll left/right between different years
+
+![YearDetailScreen](./screenshots/YearDetailsScreen_1.png)
 
 ## Event Logging Mechanism
 
