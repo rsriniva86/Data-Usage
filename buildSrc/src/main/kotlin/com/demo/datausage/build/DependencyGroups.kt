@@ -20,6 +20,10 @@ internal val junitTestDependencies = listOf(
     Dependencies.junit,
     Dependencies.kotlinCoroutineTest
 )
+internal val mokitoAndroidTestDependencies = listOf(
+    Dependencies.mokitoNhaarman,
+    Dependencies.mokitoAndroid
+)
 
 internal val androidTestDependencies = listOf(
     Dependencies.extJunit,

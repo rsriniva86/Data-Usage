@@ -20,9 +20,17 @@ fun DependencyHandler.addJUnitTestDependencies() {
     }
 }
 
+
+
 fun DependencyHandler.addAndroidTestDependencies() {
     androidTestDependencies.forEach {
         add("implementation", it)
+    }
+    addMokitoAndroidTest()
+}
+fun DependencyHandler.addMokitoAndroidTest(){
+    mokitoAndroidTestDependencies.forEach{
+        add("androidTestImplementation", it)
     }
 }
 

@@ -1,6 +1,7 @@
 package com.demo.datausage.build
 
 object Dependencies {
+
     const val androidPlugin = "com.android.tools.build:gradle:${Versions.gradlePlugin}"
     const val kotlinPlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin}"
     const val ktx = "androidx.core:core-ktx:${Versions.ktx}"
@@ -13,6 +14,8 @@ object Dependencies {
     const val constraintLayout =
         "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
     const val junit = "junit:junit:${Versions.jUnit}"
+    const val mokitoNhaarman= "com.nhaarman.mockitokotlin2:mockito-kotlin:${Versions.mokitoNhaarman}"
+    const val mokitoAndroid= "org.mockito:mockito-android:${Versions.mokitoAndroid}"
     const val extJunit = "androidx.test.ext:junit:${Versions.extJunit}"
     const val espresso = "androidx.test.espresso:espresso-core:${Versions.espresso}"
     const val composeUi = "androidx.compose.ui:ui:${Versions.compose}"
