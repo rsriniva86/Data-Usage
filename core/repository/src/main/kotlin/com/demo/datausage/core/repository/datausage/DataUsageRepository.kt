@@ -1,6 +1,5 @@
 package com.demo.datausage.core.repository.datausage
 
-import android.util.Log
 import com.demo.datausage.core.data.datasource.local.database.dao.DataUsageDao
 import com.demo.datausage.core.data.datasource.remote.DataUsageAPI
 import com.demo.datausage.core.repository.connection.ConnectionManager
@@ -12,6 +11,7 @@ import com.demo.datausage.domainmodels.YearWiseData
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flow
+import timber.log.Timber
 
 interface DataUsageRepository {
 
@@ -63,9 +63,9 @@ class DataUsageRepository_Impl(
         when (connectionManager.isNetworkAvailable()) {
             true -> {
                 val response = service.getDataUsage(resource_id)
-                Log.d("DEMO", "$response")
+                Timber.d( "$response")
                 val dbDataListFromResponse = DBDataMapper.mapFromResponse(response)
-                Log.d("DEMO", "$dbDataListFromResponse")
+                Timber.d( "$dbDataListFromResponse")
                 if (dbDataListFromResponse.isNotEmpty()) {
                     dataUsageDao.deleteAll()
                     dataUsageDao.insertAll(dbDataListFromResponse)
