@@ -20,7 +20,8 @@ import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
 import org.mockito.Mock
- class DataUsageRepositoryTest {
+
+class DataUsageRepositoryTest {
 
     private lateinit var repository: DataUsageRepository
 
@@ -28,7 +29,7 @@ import org.mockito.Mock
     private lateinit var dao: DataUsageDao
 
     @Mock
-    private lateinit var service : DataUsageAPI
+    private lateinit var service: DataUsageAPI
 
     @Mock
     private lateinit var connectionManager: ConnectionManager
@@ -65,16 +66,16 @@ import org.mockito.Mock
                 emit(sampleMobileDataUsageDBData)
             }
             whenever(dao.fetchAllData()).thenReturn(myDataFlow)
-            val dataReturned=repository.getYearWiseData().first()
+            val dataReturned = repository.getYearWiseData().first()
             verify(dao, times(numInvocations = 1)).fetchAllData()
-            Assert.assertEquals(sampleMobileDataUsageDBData[0].year,dataReturned[0].year)
+            Assert.assertEquals(sampleMobileDataUsageDBData[0].year, dataReturned[0].year)
             var totalValue = 0.0
             sampleMobileDataUsageDBData
                 .filter { it.year == 2011L }
                 .forEach {
 
-                totalValue += it.value
-            }
+                    totalValue += it.value
+                }
             Assert.assertEquals(
                 totalValue.toString(),
                 dataReturned[0].value
@@ -93,7 +94,7 @@ import org.mockito.Mock
             whenever(dao.fetchAllData()).thenReturn(myDataFlow)
             whenever(connectionManager.isNetworkAvailable()).thenReturn(true)
             whenever(service.getDataUsage(resource_id)).thenReturn(sampleDataUsageResponse)
-            val dataReturned=repository
+            val dataReturned = repository
                 .getYearWiseData()
                 .take(2)
                 .toList()
@@ -103,17 +104,17 @@ import org.mockito.Mock
             verify(dao, times(numInvocations = 1)).deleteAll()
             verify(dao, times(numInvocations = 1)).insertAll(any())
 
-            Assert.assertEquals(sampleMobileDataUsageDBData[0].year,cacheData[0].year)
-            Assert.assertEquals(sampleMobileDataUsageDBData[4].year,cacheData[1].year)
-            Assert.assertEquals(sampleMobileDataUsageDBData[0].year,serverData[0].year)
-            Assert.assertEquals(sampleMobileDataUsageDBData[4].year,cacheData[1].year)
+            Assert.assertEquals(sampleMobileDataUsageDBData[0].year, cacheData[0].year)
+            Assert.assertEquals(sampleMobileDataUsageDBData[4].year, cacheData[1].year)
+            Assert.assertEquals(sampleMobileDataUsageDBData[0].year, serverData[0].year)
+            Assert.assertEquals(sampleMobileDataUsageDBData[4].year, cacheData[1].year)
 
             var totalValue = 0.0
             sampleMobileDataUsageDBData
                 .filter { it.year == 2011L }
                 .forEach {
-                totalValue += it.value
-            }
+                    totalValue += it.value
+                }
             Assert.assertEquals(
                 totalValue.toString(),
                 cacheData[0].value
@@ -151,9 +152,9 @@ import org.mockito.Mock
                 totalValue += it.value
             }
             whenever(dao.fetchAllData()).thenReturn(myDataFlow)
-            val dataReturned=repository.getQtrWiseData().first()
+            val dataReturned = repository.getQtrWiseData().first()
             verify(dao, times(numInvocations = 1)).fetchAllData()
-            Assert.assertEquals(sampleMobileDataUsageDBData[0].year,dataReturned[0].year)
+            Assert.assertEquals(sampleMobileDataUsageDBData[0].year, dataReturned[0].year)
 
             Assert.assertEquals(
                 sampleMobileDataUsageDBData[0].value.toString(),
@@ -184,7 +185,7 @@ import org.mockito.Mock
             whenever(dao.fetchAllData()).thenReturn(myDataFlow)
             whenever(connectionManager.isNetworkAvailable()).thenReturn(true)
             whenever(service.getDataUsage(resource_id)).thenReturn(sampleDataUsageResponse)
-            val dataReturned=repository
+            val dataReturned = repository
                 .getQtrWiseData()
                 .take(2)
                 .toList()
@@ -194,10 +195,10 @@ import org.mockito.Mock
             verify(dao, times(numInvocations = 1)).deleteAll()
             verify(dao, times(numInvocations = 1)).insertAll(any())
 
-            Assert.assertEquals(sampleMobileDataUsageDBData[0].year,cacheData[0].year)
-            Assert.assertEquals(sampleMobileDataUsageDBData[4].year,cacheData[1].year)
-            Assert.assertEquals(sampleMobileDataUsageDBData[0].year,serverData[0].year)
-            Assert.assertEquals(sampleMobileDataUsageDBData[4].year,cacheData[1].year)
+            Assert.assertEquals(sampleMobileDataUsageDBData[0].year, cacheData[0].year)
+            Assert.assertEquals(sampleMobileDataUsageDBData[4].year, cacheData[1].year)
+            Assert.assertEquals(sampleMobileDataUsageDBData[0].year, serverData[0].year)
+            Assert.assertEquals(sampleMobileDataUsageDBData[4].year, cacheData[1].year)
 
 
             Assert.assertEquals(

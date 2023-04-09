@@ -44,7 +44,7 @@ class DataUsageDbTest {
             dao.insert(sampleMobileDataUsageDBData[1])
             var usageData: List<MobileDataUsageDB> = dao.fetchAllData().first()
 
-            assertEquals(2,usageData.size)
+            assertEquals(2, usageData.size)
             assertTrue(usageData.contains(sampleMobileDataUsageDBData[0]))
             assertTrue(usageData.contains(sampleMobileDataUsageDBData[1]))
             assertFalse(usageData.contains(sampleMobileDataUsageDBData[2]))
@@ -52,9 +52,9 @@ class DataUsageDbTest {
 
             dao.insert(sampleMobileDataUsageDBData[2])
             dao.insert(sampleMobileDataUsageDBData[3])
-            usageData= dao.fetchAllData().first()
+            usageData = dao.fetchAllData().first()
 
-            assertEquals(4,usageData.size)
+            assertEquals(4, usageData.size)
             assertTrue(usageData.contains(sampleMobileDataUsageDBData[2]))
             assertTrue(usageData.contains(sampleMobileDataUsageDBData[3]))
 
@@ -80,7 +80,7 @@ class DataUsageDbTest {
             assertTrue(dao.fetchAllData().first().isEmpty())
             dao.insertAll(sampleMobileDataUsageDBData)
             val usageData: List<MobileDataUsageDB> = dao.fetchAllData().first()
-            assertEquals(sampleMobileDataUsageDBData.size,usageData.size)
+            assertEquals(sampleMobileDataUsageDBData.size, usageData.size)
             assertTrue(usageData.contains(sampleMobileDataUsageDBData[0]))
             assertTrue(usageData.contains(sampleMobileDataUsageDBData[1]))
             assertTrue(usageData.contains(sampleMobileDataUsageDBData[2]))
@@ -100,8 +100,8 @@ class DataUsageDbTest {
             assertTrue(dao.fetchAllData().first().isEmpty())
             dao.insert(sampleMobileDataUsageDBData[0])
             val usageData: List<MobileDataUsageDB> = dao.fetchAllData().first()
-            assertEquals(1,usageData.size)
-            assertEquals(sampleMobileDataUsageDBData[0].value,usageData[0].value)
+            assertEquals(1, usageData.size)
+            assertEquals(sampleMobileDataUsageDBData[0].value, usageData[0].value)
             val updatedData = MobileDataUsageDB(
                 id = sampleMobileDataUsageDBData[0].id,
                 year = sampleMobileDataUsageDBData[0].year,
@@ -110,12 +110,13 @@ class DataUsageDbTest {
             )
             dao.update(updatedData)
             val updatedUsageData: List<MobileDataUsageDB> = dao.fetchAllData().first()
-            assertEquals(1,updatedUsageData.size)
-            assertNotEquals(sampleMobileDataUsageDBData[0].value,updatedUsageData[0].value)
-            assertEquals(100.0,updatedUsageData[0].value)
+            assertEquals(1, updatedUsageData.size)
+            assertNotEquals(sampleMobileDataUsageDBData[0].value, updatedUsageData[0].value)
+            assertEquals(100.0, updatedUsageData[0].value)
 
         }
     }
+
     @Test
     fun testDeleteAll() {
         runBlocking {
@@ -123,11 +124,11 @@ class DataUsageDbTest {
             assertTrue(dao.fetchAllData().first().isEmpty())
             dao.insertAll(sampleMobileDataUsageDBData)
             val usageData: List<MobileDataUsageDB> = dao.fetchAllData().first()
-            assertEquals(sampleMobileDataUsageDBData.size,usageData.size)
+            assertEquals(sampleMobileDataUsageDBData.size, usageData.size)
             dao.deleteAll()
             val data = dao.fetchAllData().first()
             assertTrue(data.isEmpty())
-            assertEquals(0,data.size)
+            assertEquals(0, data.size)
         }
     }
 
@@ -138,14 +139,13 @@ class DataUsageDbTest {
             assertTrue(dao.fetchAllData().first().isEmpty())
             dao.insertAll(sampleMobileDataUsageDBData)
             val usageData: List<MobileDataUsageDB> = dao.fetchAllData().first()
-            assertEquals(sampleMobileDataUsageDBData.size,usageData.size)
+            assertEquals(sampleMobileDataUsageDBData.size, usageData.size)
             dao.delete(sampleMobileDataUsageDBData[0])
             val data = dao.fetchAllData().first()
             assertTrue(data.isNotEmpty())
-            assertEquals((sampleMobileDataUsageDBData.size-1),data.size)
+            assertEquals((sampleMobileDataUsageDBData.size - 1), data.size)
         }
     }
-
 
 
 }

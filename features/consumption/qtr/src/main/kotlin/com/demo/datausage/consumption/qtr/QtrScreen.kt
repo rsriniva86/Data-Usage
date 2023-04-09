@@ -155,7 +155,7 @@ private fun QuarterWiseItem(
         Row {
             Text(
                 modifier = Modifier
-                    .testTag("YEAR_TAG"+dataItem.year)
+                    .testTag("YEAR_TAG" + dataItem.year)
                     .fillMaxWidth(),
                 text = "${dataItem.year}",
                 style = MaterialTheme.typography.headlineMedium,
@@ -166,28 +166,28 @@ private fun QuarterWiseItem(
         Spacer(modifier = Modifier.height(96.dp))
         if (dataItem.qOneValue.isNotEmpty()) {
             QuarterCard(
-                testTag= "Q1_TAG"+dataItem.year,
+                testTag = "Q1_TAG" + dataItem.year,
                 label = context.getString(R.string.q1_label),
                 data = dataItem.qOneValue
             )
         }
         if (dataItem.qTwoValue.isNotEmpty()) {
             QuarterCard(
-                testTag= "Q2_TAG"+dataItem.year,
+                testTag = "Q2_TAG" + dataItem.year,
                 label = context.getString(R.string.q2_label),
                 data = dataItem.qTwoValue
             )
         }
         if (dataItem.qThreeValue.isNotEmpty()) {
             QuarterCard(
-                testTag= "Q3_TAG"+dataItem.year,
+                testTag = "Q3_TAG" + dataItem.year,
                 label = context.getString(R.string.q3_label),
                 data = dataItem.qThreeValue
             )
         }
         if (dataItem.qFourValue.isNotEmpty()) {
             QuarterCard(
-                testTag= "Q4_TAG"+dataItem.year,
+                testTag = "Q4_TAG" + dataItem.year,
                 label = context.getString(R.string.q4_label),
                 data = dataItem.qFourValue
             )
@@ -203,7 +203,7 @@ fun QuarterCard(
     modifier: Modifier = Modifier,
     data: String,
     label: String,
-    testTag:String
+    testTag: String
 ) {
     Card(
         modifier = modifier
