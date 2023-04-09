@@ -30,6 +30,9 @@ It is possible to scroll left/right between different years
 
 ## Event Logging Mechanism
 
+When a specific year's details is shown in UI. It is tracked in event logging. This is illustrated in below logs
+![EventLogging](./screenshots/EventLoggingLogs.png)
+
 ## Unit Testing (Instrumented Tests)
 
 ### features/consumption/years
