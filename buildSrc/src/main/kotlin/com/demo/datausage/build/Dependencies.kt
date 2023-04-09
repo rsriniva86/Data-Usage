@@ -1,6 +1,7 @@
 package com.demo.datausage.build
 
 object Dependencies {
+
     const val androidPlugin = "com.android.tools.build:gradle:${Versions.gradlePlugin}"
     const val kotlinPlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin}"
     const val ktx = "androidx.core:core-ktx:${Versions.ktx}"
@@ -13,6 +14,8 @@ object Dependencies {
     const val constraintLayout =
         "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
     const val junit = "junit:junit:${Versions.jUnit}"
+    const val mokitoNhaarman= "com.nhaarman.mockitokotlin2:mockito-kotlin:${Versions.mokitoNhaarman}"
+    const val mokitoAndroid= "org.mockito:mockito-android:${Versions.mokitoAndroid}"
     const val extJunit = "androidx.test.ext:junit:${Versions.extJunit}"
     const val espresso = "androidx.test.espresso:espresso-core:${Versions.espresso}"
     const val composeUi = "androidx.compose.ui:ui:${Versions.compose}"
@@ -31,12 +34,15 @@ object Dependencies {
     const val composeActivity = "androidx.activity:activity-compose:${Versions.activityCompose}"
     const val composeLottie = "com.airbnb.android:lottie-compose:${Versions.lottie}"
     const val composeNavigation = "androidx.navigation:navigation-compose:${Versions.navCompose}"
+    const val composeUiTest = "androidx.compose.ui:ui-test:${Versions.compose}"
     const val composeUiTestJunit4 = "androidx.compose.ui:ui-test-junit4:${Versions.compose}"
     const val composeUiTestManifest = "androidx.compose.ui:ui-test-manifest:${Versions.compose}"
+
     const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
     const val retrofitGSON = "com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
     const val retrofitLogInterceptor =
         "com.squareup.okhttp3:logging-interceptor:${Versions.retrofitLogIntercepter}"
+    const val mockWebServer = "com.squareup.okhttp3:mockwebserver:${Versions.mockWebServer}"
     const val koin = "io.insert-koin:koin-core:${Versions.koin}"
     const val koinAndroid = "io.insert-koin:koin-android:${Versions.koinAndroid}"
     const val koinAndroidXCompose =
@@ -45,6 +51,9 @@ object Dependencies {
         "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutine}"
     const val kotlinCoroutineCore =
         "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutine}"
+    const val kotlinCoroutineTest =
+         "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.coroutine}"
+
     const val roomRuntime = "androidx.room:room-runtime:${Versions.room}"
     const val roomKtx = "androidx.room:room-ktx:${Versions.room}"
     const val roomCompiler = "androidx.room:room-compiler:${Versions.room}"

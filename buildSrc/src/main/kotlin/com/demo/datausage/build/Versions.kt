@@ -11,6 +11,8 @@ object Versions {
     const val appCompat = "1.4.1"
     const val constraintLayout = "1.1.3"
     const val jUnit = "4.13.2"
+    const val mokitoNhaarman="2.0.0"
+    const val mokitoAndroid="3.8.0"
     const val extJunit = "1.1.3"
     const val espresso = "3.4.0"
     const val compose = "1.4.0"
@@ -26,6 +28,7 @@ object Versions {
     const val material3 = "1.0.1"
     const val retrofit = "2.9.0"
     const val retrofitLogIntercepter = "4.10.0"
+    const val mockWebServer = "4.9.3"
     const val koin = "3.4.0"
     const val koinAndroid = koin
     const val koinAndroidXCompose = koin

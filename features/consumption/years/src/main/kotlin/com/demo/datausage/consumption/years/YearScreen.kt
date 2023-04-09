@@ -19,6 +19,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -85,6 +86,7 @@ private fun YearItem(
     val context = LocalContext.current
     Card(
         modifier = Modifier
+            .testTag(dataItem.year.toString())
             .padding(all = 8.dp)
             .fillMaxWidth(),
         onClick = {
@@ -99,6 +101,7 @@ private fun YearItem(
         ) {
 
             Text(
+                modifier = Modifier.testTag(dataItem.year.toString() + "Year"),
                 text = "${context.getString(R.string.year_label)} ${dataItem.year}",
                 color = MaterialTheme.colorScheme.onPrimary,
                 style = MaterialTheme.typography.bodyLarge,
@@ -106,6 +109,7 @@ private fun YearItem(
             )
 
             Text(
+                modifier = Modifier.testTag(dataItem.year.toString() + "Usage"),
                 text = "${context.getString(R.string.usage_label)} ${dataItem.value}",
                 color = MaterialTheme.colorScheme.onPrimary,
                 style = MaterialTheme.typography.bodyLarge,

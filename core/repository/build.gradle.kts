@@ -1,4 +1,5 @@
 import com.demo.datausage.build.addAndroidDependencies
+import com.demo.datausage.build.addAndroidTestDependencies
 import com.demo.datausage.build.addAndroidUIDependencies
 import com.demo.datausage.build.addComposeOfficialDependencies
 import com.demo.datausage.build.addComposeThirdPartyDependencies
@@ -22,5 +23,7 @@ dependencies {
     addRetrofitDependencies()
     addKotlinCoroutineDependencies()
     addDependencyInjectionDependencies()
+
+    addAndroidTestDependencies()
 
 }

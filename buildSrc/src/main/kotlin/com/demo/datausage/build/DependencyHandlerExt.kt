@@ -16,15 +16,30 @@ fun DependencyHandler.addAndroidUIDependencies() {
 
 fun DependencyHandler.addJUnitTestDependencies() {
     junitTestDependencies.forEach {
-        add("implementation", it)
+        add("testImplementation", it)
     }
 }
+
+
 
 fun DependencyHandler.addAndroidTestDependencies() {
     androidTestDependencies.forEach {
         add("implementation", it)
     }
+    addMokitoAndroidTest()
 }
+private fun DependencyHandler.addMokitoAndroidTest(){
+    mokitoAndroidTestDependencies.forEach{
+        add("androidTestImplementation", it)
+    }
+}
+
+fun DependencyHandler.addMockWebServerAndroidTestDependencies(){
+    mockWebServerAndroidTestDependencies.forEach{
+        add("androidTestImplementation", it)
+    }
+}
+
 
 fun DependencyHandler.addComposeOfficialDependencies() {
     composeOfficialDependencies.forEach {
@@ -35,6 +50,17 @@ fun DependencyHandler.addComposeOfficialDependencies() {
 fun DependencyHandler.addComposeThirdPartyDependencies() {
     composeThirdPartyDependencies.forEach {
         add("implementation", it)
+    }
+}
+
+fun DependencyHandler.addComposeUITestDependencies() {
+    composeUITestDependencies.forEach {
+        if (it == Dependencies.composeUiTestManifest) {
+            add("debugImplementation", it)
+        } else {
+            add("androidTestImplementation", it)
+        }
+
     }
 }
 
@@ -66,3 +92,6 @@ fun DependencyHandler.addDBDependencies() {
 
     }
 }
+
+
+

@@ -17,7 +17,16 @@ internal val kotlinCoroutineDependencies = listOf(
 )
 
 internal val junitTestDependencies = listOf(
-    Dependencies.junit
+    Dependencies.junit,
+    Dependencies.kotlinCoroutineTest
+)
+internal val mokitoAndroidTestDependencies = listOf(
+    Dependencies.mokitoNhaarman,
+    Dependencies.mokitoAndroid
+)
+
+internal val mockWebServerAndroidTestDependencies = listOf(
+    Dependencies.mockWebServer
 )
 
 internal val androidTestDependencies = listOf(
@@ -43,6 +52,12 @@ internal val composeThirdPartyDependencies = listOf(
     Dependencies.composeLottie,
 )
 
+internal val composeUITestDependencies = listOf(
+    Dependencies.composeUiTest,
+    Dependencies.composeUiTestManifest,
+    Dependencies.composeUiTestJunit4
+)
+
 internal val retrofitDependencies = listOf(
     Dependencies.retrofit,
     Dependencies.retrofitGSON,
@@ -60,4 +75,6 @@ internal val dbDependencies = listOf(
     Dependencies.roomKtx,
     Dependencies.roomCompiler
 )
+
+
 

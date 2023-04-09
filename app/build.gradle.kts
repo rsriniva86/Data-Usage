@@ -61,4 +61,5 @@ dependencies {
     addKotlinCoroutineDependencies()
     addDependencyInjectionDependencies()
     addDBDependencies()
+    addComposeUITestDependencies()
 }
