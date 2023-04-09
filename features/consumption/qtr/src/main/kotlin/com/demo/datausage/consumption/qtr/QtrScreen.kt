@@ -33,6 +33,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.NestedScrollConnection
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Velocity
@@ -154,6 +155,7 @@ private fun QuarterWiseItem(
         Row {
             Text(
                 modifier = Modifier
+                    .testTag("YEAR_TAG"+dataItem.year)
                     .fillMaxWidth(),
                 text = "${dataItem.year}",
                 style = MaterialTheme.typography.headlineMedium,
@@ -164,24 +166,28 @@ private fun QuarterWiseItem(
         Spacer(modifier = Modifier.height(96.dp))
         if (dataItem.qOneValue.isNotEmpty()) {
             QuarterCard(
+                testTag= "Q1_TAG"+dataItem.year,
                 label = context.getString(R.string.q1_label),
                 data = dataItem.qOneValue
             )
         }
         if (dataItem.qTwoValue.isNotEmpty()) {
             QuarterCard(
+                testTag= "Q2_TAG"+dataItem.year,
                 label = context.getString(R.string.q2_label),
                 data = dataItem.qTwoValue
             )
         }
         if (dataItem.qThreeValue.isNotEmpty()) {
             QuarterCard(
+                testTag= "Q3_TAG"+dataItem.year,
                 label = context.getString(R.string.q3_label),
                 data = dataItem.qThreeValue
             )
         }
         if (dataItem.qFourValue.isNotEmpty()) {
             QuarterCard(
+                testTag= "Q4_TAG"+dataItem.year,
                 label = context.getString(R.string.q4_label),
                 data = dataItem.qFourValue
             )
@@ -196,7 +202,8 @@ private fun QuarterWiseItem(
 fun QuarterCard(
     modifier: Modifier = Modifier,
     data: String,
-    label: String
+    label: String,
+    testTag:String
 ) {
     Card(
         modifier = modifier
@@ -211,8 +218,10 @@ fun QuarterCard(
         ) {
             Row(modifier = Modifier.fillMaxWidth()) {
                 Text(
-                    modifier = Modifier.fillMaxWidth(),
-                    text = "$label : $data",
+                    modifier = Modifier
+                        .testTag(testTag)
+                        .fillMaxWidth(),
+                    text = "$label $data",
                     textAlign = TextAlign.Center,
                     color = MaterialTheme.colorScheme.onPrimary,
                     style = MaterialTheme.typography.bodyLarge
