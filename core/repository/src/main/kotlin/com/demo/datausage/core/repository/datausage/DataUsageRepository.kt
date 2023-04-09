@@ -63,9 +63,9 @@ class DataUsageRepository_Impl(
         when (connectionManager.isNetworkAvailable()) {
             true -> {
                 val response = service.getDataUsage(resource_id)
-                Timber.d( "$response")
+                Timber.d("$response")
                 val dbDataListFromResponse = DBDataMapper.mapFromResponse(response)
-                Timber.d( "$dbDataListFromResponse")
+                Timber.d("$dbDataListFromResponse")
                 if (dbDataListFromResponse.isNotEmpty()) {
                     dataUsageDao.deleteAll()
                     dataUsageDao.insertAll(dbDataListFromResponse)

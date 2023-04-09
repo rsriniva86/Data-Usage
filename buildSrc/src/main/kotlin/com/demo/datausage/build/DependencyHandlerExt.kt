@@ -21,21 +21,21 @@ fun DependencyHandler.addJUnitTestDependencies() {
 }
 
 
-
 fun DependencyHandler.addAndroidTestDependencies() {
     androidTestDependencies.forEach {
         add("implementation", it)
     }
     addMokitoAndroidTest()
 }
-private fun DependencyHandler.addMokitoAndroidTest(){
-    mokitoAndroidTestDependencies.forEach{
+
+private fun DependencyHandler.addMokitoAndroidTest() {
+    mokitoAndroidTestDependencies.forEach {
         add("androidTestImplementation", it)
     }
 }
 
-fun DependencyHandler.addMockWebServerAndroidTestDependencies(){
-    mockWebServerAndroidTestDependencies.forEach{
+fun DependencyHandler.addMockWebServerAndroidTestDependencies() {
+    mockWebServerAndroidTestDependencies.forEach {
         add("androidTestImplementation", it)
     }
 }

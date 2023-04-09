@@ -5,7 +5,6 @@ import com.demo.datausage.core.repository.datausage.DataUsageRepository
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.whenever
 import junit.framework.TestCase.assertEquals
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.runBlocking
 import org.junit.After
@@ -16,6 +15,7 @@ import org.mockito.Mock
 class YearScreenViewModelTest {
 
     private lateinit var viewModel: YearScreenViewModel
+
     @Mock
     private lateinit var repository: DataUsageRepository
 
@@ -30,7 +30,7 @@ class YearScreenViewModelTest {
     }
 
     @Test
-    fun testGetYearData(){
+    fun testGetYearData() {
         runBlocking {
             val myDataFlow = flow {
                 emit(sampleYearWiseData)
@@ -38,7 +38,7 @@ class YearScreenViewModelTest {
             whenever(repository.getYearWiseData()).thenReturn(myDataFlow)
             val job = viewModel.getYearData()
             job.join()
-            assertEquals(sampleYearWiseData,viewModel.list.toList(),)
+            assertEquals(sampleYearWiseData, viewModel.list.toList())
         }
     }
 

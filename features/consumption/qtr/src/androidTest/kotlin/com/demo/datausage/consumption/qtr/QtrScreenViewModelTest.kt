@@ -14,6 +14,7 @@ import org.mockito.Mock
 
 class QtrScreenViewModelTest {
     private lateinit var viewModel: QtrScreenViewModel
+
     @Mock
     private lateinit var repository: DataUsageRepository
 
@@ -28,7 +29,7 @@ class QtrScreenViewModelTest {
     }
 
     @Test
-    fun testGetQtrData(){
+    fun testGetQtrData() {
         runBlocking {
             val myDataFlow = flow {
                 emit(sampleQuarterWiseDataList)
@@ -36,7 +37,7 @@ class QtrScreenViewModelTest {
             whenever(repository.getQtrWiseData()).thenReturn(myDataFlow)
             val job = viewModel.getQuarterData()
             job.join()
-            TestCase.assertEquals(sampleQuarterWiseDataList,viewModel.list.toList())
+            TestCase.assertEquals(sampleQuarterWiseDataList, viewModel.list.toList())
         }
     }
 

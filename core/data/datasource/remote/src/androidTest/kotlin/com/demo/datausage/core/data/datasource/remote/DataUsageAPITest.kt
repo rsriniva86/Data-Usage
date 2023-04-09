@@ -1,6 +1,5 @@
 package com.demo.datausage.core.data.datasource.remote
 
-import com.demo.datausage.core.data.datasource.remote.SampleData
 import com.demo.datausage.core.data.datasource.remote.dto.DataUsageResponse
 import com.google.gson.Gson
 import junit.framework.TestCase.assertEquals
@@ -17,7 +16,7 @@ import java.net.HttpURLConnection
 class DataUsageAPITest {
 
     private lateinit var mockWebServer: MockWebServer
-    private lateinit var apiService : DataUsageAPI
+    private lateinit var apiService: DataUsageAPI
 
     @Before
     fun setUp() {
@@ -39,19 +38,21 @@ class DataUsageAPITest {
     }
 
     @Test
-    fun testGetDataUsageCall(){
+    fun testGetDataUsageCall() {
         runBlocking {
 
             val response =
-                MockResponse().setResponseCode(HttpURLConnection.HTTP_OK).setBody(SampleData.sampleDataUsageResponse)
+                MockResponse().setResponseCode(HttpURLConnection.HTTP_OK)
+                    .setBody(SampleData.sampleDataUsageResponse)
             mockWebServer.enqueue(response)
-            val expectedResponse = Gson().fromJson(SampleData.sampleDataUsageResponse, DataUsageResponse::class.java)
+            val expectedResponse =
+                Gson().fromJson(SampleData.sampleDataUsageResponse, DataUsageResponse::class.java)
 
             val result = apiService.getDataUsage(SampleData.resource_id)
             val actualRequest = mockWebServer.takeRequest()
 
             assert(actualRequest.path == SampleData.expectedPath)
-            assertEquals(expectedResponse,result)
+            assertEquals(expectedResponse, result)
         }
 
     }

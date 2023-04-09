@@ -17,8 +17,8 @@ class YearScreenViewModel(
 
     val list = mutableStateListOf<YearWiseData>()
 
-    fun getYearData() : Job {
-     val job= viewModelScope.launch(Dispatchers.IO) {
+    fun getYearData(): Job {
+        val job = viewModelScope.launch(Dispatchers.IO) {
             getData()
         }
         return job
