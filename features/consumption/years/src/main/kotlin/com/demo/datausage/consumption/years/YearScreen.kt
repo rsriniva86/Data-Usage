@@ -42,7 +42,6 @@ fun YearScreen(
     Scaffold(topBar = {
         TopAppBar(title = {
             Row(
-
                 horizontalArrangement = Arrangement.Start,
                 modifier = Modifier.padding(start = 8.dp)
             ) {
