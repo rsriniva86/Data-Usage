@@ -13,6 +13,7 @@ import junit.framework.TestCase.assertTrue
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 import org.junit.After
+import org.junit.Assert.assertNotEquals
 import org.junit.Before
 import org.junit.Test
 
@@ -41,21 +42,21 @@ class DataUsageDbTest {
             assertTrue(dao.fetchAllData().first().isEmpty())
             dao.insert(sampleMobileDataUsageDBData[0])
             dao.insert(sampleMobileDataUsageDBData[1])
-            var activities: List<MobileDataUsageDB> = dao.fetchAllData().first()
+            var usageData: List<MobileDataUsageDB> = dao.fetchAllData().first()
 
-            assertEquals(2,activities.size)
-            assertTrue(activities.contains(sampleMobileDataUsageDBData[0]))
-            assertTrue(activities.contains(sampleMobileDataUsageDBData[1]))
-            assertFalse(activities.contains(sampleMobileDataUsageDBData[2]))
-            assertFalse(activities.contains(sampleMobileDataUsageDBData[3]))
+            assertEquals(2,usageData.size)
+            assertTrue(usageData.contains(sampleMobileDataUsageDBData[0]))
+            assertTrue(usageData.contains(sampleMobileDataUsageDBData[1]))
+            assertFalse(usageData.contains(sampleMobileDataUsageDBData[2]))
+            assertFalse(usageData.contains(sampleMobileDataUsageDBData[3]))
 
             dao.insert(sampleMobileDataUsageDBData[2])
             dao.insert(sampleMobileDataUsageDBData[3])
-            activities= dao.fetchAllData().first()
+            usageData= dao.fetchAllData().first()
 
-            assertEquals(4,activities.size)
-            assertTrue(activities.contains(sampleMobileDataUsageDBData[2]))
-            assertTrue(activities.contains(sampleMobileDataUsageDBData[3]))
+            assertEquals(4,usageData.size)
+            assertTrue(usageData.contains(sampleMobileDataUsageDBData[2]))
+            assertTrue(usageData.contains(sampleMobileDataUsageDBData[3]))
 
 
         }
@@ -67,8 +68,8 @@ class DataUsageDbTest {
             dao.deleteAll()
             assertTrue(dao.fetchAllData().first().isEmpty())
             dao.insert(sampleMobileDataUsageDBData[0])
-            val activities: List<MobileDataUsageDB> = dao.fetchAllData().first()
-            assertTrue(activities.contains(sampleMobileDataUsageDBData[0]))
+            val usageData: List<MobileDataUsageDB> = dao.fetchAllData().first()
+            assertTrue(usageData.contains(sampleMobileDataUsageDBData[0]))
         }
     }
 
@@ -78,18 +79,73 @@ class DataUsageDbTest {
             dao.deleteAll()
             assertTrue(dao.fetchAllData().first().isEmpty())
             dao.insertAll(sampleMobileDataUsageDBData)
-            val activities: List<MobileDataUsageDB> = dao.fetchAllData().first()
-            assertEquals(sampleMobileDataUsageDBData.size,activities.size)
-            assertTrue(activities.contains(sampleMobileDataUsageDBData[0]))
-            assertTrue(activities.contains(sampleMobileDataUsageDBData[1]))
-            assertTrue(activities.contains(sampleMobileDataUsageDBData[2]))
-            assertTrue(activities.contains(sampleMobileDataUsageDBData[3]))
-            assertTrue(activities.contains(sampleMobileDataUsageDBData[4]))
-            assertTrue(activities.contains(sampleMobileDataUsageDBData[5]))
-            assertTrue(activities.contains(sampleMobileDataUsageDBData[6]))
-            assertTrue(activities.contains(sampleMobileDataUsageDBData[7]))
+            val usageData: List<MobileDataUsageDB> = dao.fetchAllData().first()
+            assertEquals(sampleMobileDataUsageDBData.size,usageData.size)
+            assertTrue(usageData.contains(sampleMobileDataUsageDBData[0]))
+            assertTrue(usageData.contains(sampleMobileDataUsageDBData[1]))
+            assertTrue(usageData.contains(sampleMobileDataUsageDBData[2]))
+            assertTrue(usageData.contains(sampleMobileDataUsageDBData[3]))
+            assertTrue(usageData.contains(sampleMobileDataUsageDBData[4]))
+            assertTrue(usageData.contains(sampleMobileDataUsageDBData[5]))
+            assertTrue(usageData.contains(sampleMobileDataUsageDBData[6]))
+            assertTrue(usageData.contains(sampleMobileDataUsageDBData[7]))
 
         }
     }
+
+    @Test
+    fun testUpdate() {
+        runBlocking {
+            dao.deleteAll()
+            assertTrue(dao.fetchAllData().first().isEmpty())
+            dao.insert(sampleMobileDataUsageDBData[0])
+            val usageData: List<MobileDataUsageDB> = dao.fetchAllData().first()
+            assertEquals(1,usageData.size)
+            assertEquals(sampleMobileDataUsageDBData[0].value,usageData[0].value)
+            val updatedData = MobileDataUsageDB(
+                id = sampleMobileDataUsageDBData[0].id,
+                year = sampleMobileDataUsageDBData[0].year,
+                quarter = sampleMobileDataUsageDBData[0].quarter,
+                value = 100.0
+            )
+            dao.update(updatedData)
+            val updatedUsageData: List<MobileDataUsageDB> = dao.fetchAllData().first()
+            assertEquals(1,updatedUsageData.size)
+            assertNotEquals(sampleMobileDataUsageDBData[0].value,updatedUsageData[0].value)
+            assertEquals(100.0,updatedUsageData[0].value)
+
+        }
+    }
+    @Test
+    fun testDeleteAll() {
+        runBlocking {
+            dao.deleteAll()
+            assertTrue(dao.fetchAllData().first().isEmpty())
+            dao.insertAll(sampleMobileDataUsageDBData)
+            val usageData: List<MobileDataUsageDB> = dao.fetchAllData().first()
+            assertEquals(sampleMobileDataUsageDBData.size,usageData.size)
+            dao.deleteAll()
+            val data = dao.fetchAllData().first()
+            assertTrue(data.isEmpty())
+            assertEquals(0,data.size)
+        }
+    }
+
+    @Test
+    fun testDelete() {
+        runBlocking {
+            dao.deleteAll()
+            assertTrue(dao.fetchAllData().first().isEmpty())
+            dao.insertAll(sampleMobileDataUsageDBData)
+            val usageData: List<MobileDataUsageDB> = dao.fetchAllData().first()
+            assertEquals(sampleMobileDataUsageDBData.size,usageData.size)
+            dao.delete(sampleMobileDataUsageDBData[0])
+            val data = dao.fetchAllData().first()
+            assertTrue(data.isNotEmpty())
+            assertEquals((sampleMobileDataUsageDBData.size-1),data.size)
+        }
+    }
+
+
 
 }
