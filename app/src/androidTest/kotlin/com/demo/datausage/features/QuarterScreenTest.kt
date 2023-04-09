@@ -29,15 +29,16 @@ class QuarterScreenTest {
         composeTestRule.onNodeWithTag("2006").performClick()
         composeTestRule.waitUntil(5000L) {
             composeTestRule
-                .onAllNodesWithTag("YEAR_TAG"+2007)
+                .onAllNodesWithTag("YEAR_TAG" + 2007)
                 .fetchSemanticsNodes().size == 1
         }
-        composeTestRule.onNodeWithText("Year Details Screen").assertTextEquals("Year Details Screen")
-        composeTestRule.onNodeWithTag("YEAR_TAG"+2007).assertTextEquals("2007")
-        composeTestRule.onNodeWithTag("Q1_TAG"+2007).assertTextContains("Q1 : 0.012635")
-        composeTestRule.onNodeWithTag("Q2_TAG"+2007).assertTextContains("Q2 : 0.029992")
-        composeTestRule.onNodeWithTag("Q3_TAG"+2007).assertTextContains("Q3 : 0.053584")
-        composeTestRule.onNodeWithTag("Q4_TAG"+2007).assertTextContains("Q4 : 0.100934")
+        composeTestRule.onNodeWithText("Year Details Screen")
+            .assertTextEquals("Year Details Screen")
+        composeTestRule.onNodeWithTag("YEAR_TAG" + 2007).assertTextEquals("2007")
+        composeTestRule.onNodeWithTag("Q1_TAG" + 2007).assertTextContains("Q1 : 0.012635")
+        composeTestRule.onNodeWithTag("Q2_TAG" + 2007).assertTextContains("Q2 : 0.029992")
+        composeTestRule.onNodeWithTag("Q3_TAG" + 2007).assertTextContains("Q3 : 0.053584")
+        composeTestRule.onNodeWithTag("Q4_TAG" + 2007).assertTextContains("Q4 : 0.100934")
 
     }
 }

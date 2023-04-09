@@ -14,8 +14,9 @@ object Dependencies {
     const val constraintLayout =
         "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
     const val junit = "junit:junit:${Versions.jUnit}"
-    const val mokitoNhaarman= "com.nhaarman.mockitokotlin2:mockito-kotlin:${Versions.mokitoNhaarman}"
-    const val mokitoAndroid= "org.mockito:mockito-android:${Versions.mokitoAndroid}"
+    const val mokitoNhaarman =
+        "com.nhaarman.mockitokotlin2:mockito-kotlin:${Versions.mokitoNhaarman}"
+    const val mokitoAndroid = "org.mockito:mockito-android:${Versions.mokitoAndroid}"
     const val extJunit = "androidx.test.ext:junit:${Versions.extJunit}"
     const val espresso = "androidx.test.espresso:espresso-core:${Versions.espresso}"
     const val composeUi = "androidx.compose.ui:ui:${Versions.compose}"
@@ -52,7 +53,7 @@ object Dependencies {
     const val kotlinCoroutineCore =
         "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutine}"
     const val kotlinCoroutineTest =
-         "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.coroutine}"
+        "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.coroutine}"
 
     const val roomRuntime = "androidx.room:room-runtime:${Versions.room}"
     const val roomKtx = "androidx.room:room-ktx:${Versions.room}"
